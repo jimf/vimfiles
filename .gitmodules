@@ -1,0 +1,18 @@
+[submodule "bundle/ack"]
+	path = bundle/ack
+	url = http://github.com/mileszs/ack.vim.git
+[submodule "bundle/argtextobj"]
+	path = bundle/argtextobj
+	url = http://github.com/vim-scripts/argtextobj.vim.git
+[submodule "bundle/bufexplorer"]
+	path = bundle/bufexplorer
+	url = http://github.com/bronson/vim-bufexplorer.git
+[submodule "bundle/snipMate"]
+	path = bundle/snipMate
+	url = http://github.com/msanders/snipmate.vim.git
+[submodule "bundle/taglist"]
+	path = bundle/taglist
+	url = http://github.com/chrismetcalf/vim-taglist.git
+[submodule "bundle/xml"]
+	path = bundle/xml
+	url = http://github.com/vim-scripts/xml.vim.git
