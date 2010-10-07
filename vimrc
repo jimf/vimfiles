@@ -1,6 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: Jim Fitzpatrick <jimf@aweber.com>                              "
+" Maintainer: Jim Fitzpatrick <fitzpatrick.jim@gmail.com>                    "
 "   Revision: $Rev$                                                          "
+"        URL: http://github.com/jimf/vimfiles                                "
 "                                                                            "
 " Sections:                                                                  "
 "   01. General ................. General Vim behavior                       "
@@ -630,3 +631,9 @@ let Tlist_WinWidth=40
 " 09c. CommandT                                                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map ,t :CommandT<CR>
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 09d. Sparkup                                                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:sparkupNextMapping='<c-x>'
