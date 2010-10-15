@@ -35,6 +35,7 @@
 set nocompatible         " Get rid of Vi compatibility mode. SET FIRST!
 
 " Update runtime path to include ~/.vim/bundle directory
+filetype off
 silent! call pathogen#runtime_append_all_bundles()
 silent! call pathogen#helptags()
 
@@ -98,9 +99,9 @@ augroup PythonEvents
     autocmd FileType python let python_highlight_all = 1
     autocmd FileType python nmap <leader>m :vimgrep /^\s*def / %<CR>:cw<CR>zO
     autocmd FileType python set suffixes+=.pyc,.pyo
-    autocmd FileType python if v:version >= 703 | set colorcolumn=80 | endif
     au BufEnter * if &filetype == "python" | match ErrorMsg '\%>79v.\+' | endif
     au BufLeave * match
+    au BufEnter * if &filetype == "python" && v:version >= 703 | set colorcolumn=80 | endif
     au BufLeave * if v:version >= 703 | set colorcolumn=0 | endif
 augroup END
 
