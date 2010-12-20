@@ -16,6 +16,8 @@
 "     09a. FuzzyFinder                                                       "
 "     09b. Taglist                                                           "
 "     09c. CommandT                                                          "
+"     09c. Sparkup                                                           "
+"     09e. SnipMate                                                          "
 "                                                                            "
 " Recommended Plugins:                                                       "
 "   -> Align.vim                                                             "
@@ -134,6 +136,7 @@ augroup NewFileTemplates
     au BufNewFile *.php     :call LoadTemplate('PHP')
     au BufNewFile setup.py  :call LoadTemplate('Setup')
     au BufNewFile *_test.py :call LoadTemplate('PythonTest')
+    au BufNewFile test_*.py :call LoadTemplate('PythonTest')
     au BufNewFile *.py      :call LoadTemplate('Python')
 augroup END
 
@@ -178,18 +181,55 @@ set wildmenu             " Enhanced commandline completion.
 set ruler                " Always show info along bottom.
 set cmdheight=2          " Commandline spans 2 rows.
 set laststatus=2         " Last window always has a statusline.
-set statusline=\ %F%m%r%h\ %w\ \ LOC:\ %r%{CurDir()}%h\ \ \ Line:\ %l/%L:%c
+set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h\ \ \ Line:\ %l/%L:%c
 
 " Ignore these patterns during completion.
 set wildignore=*.pyc,*.egg-info/*
 
-function! CurDir()
-    let loc=substitute(getcwd(), $HOME, "~", "g")
+function! GetProjectName()
+    let loc=substitute(expand('%:p'), $HOME, "~", "g")
     if match(loc, '\~/svn/packages/') == 0
         return substitute(substitute(loc, '\~/svn/packages/', '', ''), '/.*', '', '')
     else
-        return loc
+        return ''
     endif
+endfunction
+
+function! GetMVCType()
+    let parentdir = expand('%:p:h:t')
+    if parentdir == 'controllers' || parentdir == 'controller'
+        return 'controller'
+    elseif parentdir == 'model'
+        return 'model'
+    elseif parentdir == 'templates'
+        return 'view'
+    else
+        return ''
+endfunction
+
+function! IsTestFile()
+    return match(expand('%:p'), 'test') >= 0
+endfunction
+
+function! Context()
+    let context = ''
+    let project = GetProjectName()
+    if project != ''
+        let context = '[' . project . ']'
+    else
+        let context = '[No Project]'
+    endif
+
+    let type = GetMVCType()
+    if type != ''
+        if IsTestFile()
+            let context = context . '[' . type . ' test]'
+        else
+            let context = context . '[' . type . ']'
+        endif
+    endif
+
+    return context
 endfunction
 
 " Enable folding and make it indent-sensitive.
@@ -366,7 +406,8 @@ nmap <leader>- ciw<C-R>=SwitchStyle("<C-R>"")<CR><ESC>
 vmap <leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
 " Faster :e
-map ,e :e <C-R>=expand("%:p:h")."/"<CR><C-D>
+"map ,e :e <C-R>=expand("%:p:h")."/"<CR><C-D>
+map ,e :e <C-R>=Look()<CR><C-D>
 
 " Call RunAllTests
 nnoremap <leader>a :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
@@ -382,6 +423,15 @@ function! CdToProjectBase()
    let _dir = strpart(expand("%:p:h"), 0, matchend(expand("%:p:h"), "_app"))
    exec "cd " . _dir
    unlet _dir
+endfunction
+
+function! Look()
+    let working = expand('%:h')
+    if working == ''
+        return ''
+    else
+        return working . '/'
+    endif
 endfunction
 
 function! Underscore2Camelcase(text)
@@ -638,3 +688,11 @@ map ,t :CommandT<CR>
 " 09d. Sparkup                                                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:sparkupNextMapping='<c-x>'
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 09e. SnipMate                                                              "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if filereadable($HOME."/.vim/snippets/support_functions.vim")
+    exec "source " . $HOME . "/.vim/snippets/support_functions.vim"
+endif
