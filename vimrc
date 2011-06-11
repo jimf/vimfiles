@@ -68,6 +68,7 @@ augroup MassageFiletype
     autocmd BufRead * if match(expand("%:p:h"), 'config/cron') > 0 | set ft=crontab | endif
     autocmd BufRead psql.edit.* set filetype=psql
     autocmd BufRead *.txt set filetype=txt
+    autocmd BufRead Vagrantfile set filetype=ruby
 augroup END
 
 autocmd FileType make setlocal noet sw=8
@@ -187,9 +188,15 @@ set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h\ \ \ Line:\ %l/%L:%c
 set wildignore=*.pyc,*.egg-info/*
 
 function! GetProjectName()
-    let loc=substitute(expand('%:p'), $HOME, "~", "g")
-    if match(loc, '\~/svn/packages/') == 0
-        return substitute(substitute(loc, '\~/svn/packages/', '', ''), '/.*', '', '')
+    let location=expand('%:p')
+    if location == ''
+        let location = getcwd()
+    endif
+    let location = substitute(location, $HOME, "~", "g")
+    if match(location, '\~/svn/packages/') == 0
+        return substitute(substitute(location, '\~/svn/packages/', '', ''), '/.*', '', '')
+    elseif match(location, '\~/svn/projects/') == 0
+        return substitute(substitute(location, '\~/svn/projects/[^/]\{-}/', '', ''), '/.*', '', '')
     else
         return ''
     endif
@@ -537,7 +544,7 @@ function! LoadTemplate(template_name)
 endfunction
 
 function! Pkg(name)
-    let target = substitute(glob('~/svn/packages/*' . a:name . '*'), "\n.*", "", "") . "/trunk"
+    let target = substitute(system("$HOME/bin/pkg " . shellescape(a:name)), '\n', '', '')
     if isdirectory(target)
         execute "cd " . target
     else
