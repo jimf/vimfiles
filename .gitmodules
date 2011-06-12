@@ -19,3 +19,15 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = http://github.com/majutsushi/tagbar.git
+[submodule "bundle/javascriptcomplete"]
+	path = bundle/javascriptcomplete
+	url = git@github.com:jimf/javascriptcomplete.git
+[submodule "bundle/IndentAnything"]
+	path = bundle/IndentAnything
+	url = https://github.com/vim-scripts/IndentAnything.git
+[submodule "bundle/javascript-indent"]
+	path = bundle/javascript-indent
+	url = https://github.com/vim-scripts/JavaScript-Indent.git
+[submodule "bundle/jslint"]
+	path = bundle/jslint
+	url = https://github.com/hallettj/jslint.vim.git
