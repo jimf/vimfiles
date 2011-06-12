@@ -14,7 +14,7 @@
 "   08. Functions/Commands ...... General functions and commands             "
 "   09. Plugins                                                              "
 "     09a. FuzzyFinder                                                       "
-"     09b. Taglist                                                           "
+"     09b. Tagbar
 "     09c. CommandT                                                          "
 "     09c. Sparkup                                                           "
 "     09e. SnipMate                                                          "
@@ -28,7 +28,7 @@
 "   -> MRU.vim                                                               "
 "   -> pathogen
 "   -> snipMate.vim                                                          "
-"   -> Taglist                                                               "
+"   -> Tagbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -422,6 +422,9 @@ nnoremap <leader>a :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
 " Re-select paste
 nnoremap ,v V']
 
+" Easier omni-completion mapping
+inoremap <c-space> <c-x><c-o>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 08. Functions/Commands                                                     "
@@ -670,19 +673,20 @@ endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09b. Taglist                                                               "
+" 09b. Tagbar                                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-let g:ctags_statusline=1          " Display function name in status bar
-let generate_tags=1               " Automatically start script
-let Tlist_Use_Horiz_Window=0      " Display tag results in vertical window
-nnoremap TT :TlistToggle<CR>
-"let Tlist_Use_Right_Window=1
-let Tlist_Compact_Format=1
-let Tlist_Exit_OnlyWindow=1
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_WinWidth=40
+"let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+"let g:ctags_statusline=1          " Display function name in status bar
+"let generate_tags=1               " Automatically start script
+"let Tlist_Use_Horiz_Window=0      " Display tag results in vertical window
+"nnoremap TT :TlistToggle<CR>
+""let Tlist_Use_Right_Window=1
+"let Tlist_Compact_Format=1
+"let Tlist_Exit_OnlyWindow=1
+"let Tlist_GainFocus_On_ToggleOpen=1
+"let Tlist_File_Fold_Auto_Close=1
+"let Tlist_WinWidth=40
+nnoremap TT :TagbarToggle<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
