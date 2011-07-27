@@ -14,10 +14,11 @@
 "   08. Functions/Commands ...... General functions and commands             "
 "   09. Plugins                                                              "
 "     09a. FuzzyFinder                                                       "
-"     09b. Tagbar
+"     09b. Tagbar                                                            "
 "     09c. CommandT                                                          "
 "     09c. Sparkup                                                           "
 "     09e. SnipMate                                                          "
+"     09f. jsLint                                                            "
 "                                                                            "
 " Recommended Plugins:                                                       "
 "   -> Align.vim                                                             "
@@ -26,9 +27,9 @@
 "   -> FuzzyFinder                                                           "
 "   -> FuzzyFinderTextMate                                                   "
 "   -> MRU.vim                                                               "
-"   -> pathogen
+"   -> pathogen                                                              "
 "   -> snipMate.vim                                                          "
-"   -> Tagbar
+"   -> Tagbar                                                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -707,3 +708,9 @@ let g:sparkupNextMapping='<c-x>'
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
     exec "source " . $HOME . "/.vim/snippets/support_functions.vim"
 endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 09f. jsLint                                                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:JSLintHighlightErrorLine = 0

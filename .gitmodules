@@ -1,33 +1,44 @@
 [submodule "bundle/ack"]
 	path = bundle/ack
 	url = http://github.com/mileszs/ack.vim.git
+	ignore = untracked
 [submodule "bundle/argtextobj"]
 	path = bundle/argtextobj
 	url = http://github.com/vim-scripts/argtextobj.vim.git
+	ignore = untracked
 [submodule "bundle/bufexplorer"]
 	path = bundle/bufexplorer
 	url = http://github.com/bronson/vim-bufexplorer.git
+	ignore = untracked
 [submodule "bundle/snipMate"]
 	path = bundle/snipMate
 	url = http://github.com/msanders/snipmate.vim.git
+	ignore = untracked
 [submodule "bundle/xml"]
 	path = bundle/xml
 	url = http://github.com/vim-scripts/xml.vim.git
+	ignore = untracked
 [submodule "snippets"]
 	path = snippets
 	url = http://github.com/jimf/snipmate-snippets.git
+	ignore = untracked
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = http://github.com/majutsushi/tagbar.git
+	ignore = untracked
 [submodule "bundle/javascriptcomplete"]
 	path = bundle/javascriptcomplete
 	url = git@github.com:jimf/javascriptcomplete.git
+	ignore = untracked
 [submodule "bundle/IndentAnything"]
 	path = bundle/IndentAnything
 	url = https://github.com/vim-scripts/IndentAnything.git
+	ignore = untracked
 [submodule "bundle/javascript-indent"]
 	path = bundle/javascript-indent
 	url = https://github.com/vim-scripts/JavaScript-Indent.git
+	ignore = untracked
 [submodule "bundle/jslint"]
 	path = bundle/jslint
 	url = https://github.com/hallettj/jslint.vim.git
+	ignore = untracked
