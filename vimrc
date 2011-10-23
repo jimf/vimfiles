@@ -18,7 +18,7 @@
 "     09c. CommandT                                                          "
 "     09c. Sparkup                                                           "
 "     09e. SnipMate                                                          "
-"     09f. jsLint                                                            "
+"     09f. Syntastic                                                         "
 "                                                                            "
 " Recommended Plugins:                                                       "
 "   -> Align.vim                                                             "
@@ -61,6 +61,7 @@ filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 augroup MassageFiletype
     autocmd!
     autocmd BufRead *.ctp set filetype=php
+    autocmd BufRead *.erb set filetype=ruby
     autocmd BufRead *.htm set filetype=php
     autocmd BufRead *.html set filetype=php
     autocmd BufRead *.mako set filetype=mako
@@ -68,7 +69,10 @@ augroup MassageFiletype
     autocmd BufRead *.thtml set filetype=php
     autocmd BufRead * if match(expand("%:p:h"), 'config/cron') > 0 | set ft=crontab | endif
     autocmd BufRead psql.edit.* set filetype=psql
+    autocmd BufRead *.pp set filetype=ruby
     autocmd BufRead *.txt set filetype=txt
+    autocmd BufRead *.zsh set filetype=zsh
+    autocmd BufRead *.zsh-theme set filetype=zsh
     autocmd BufRead Vagrantfile set filetype=ruby
 augroup END
 
@@ -96,8 +100,11 @@ augroup END
 augroup PythonEvents
     autocmd!
     autocmd FileType python set textwidth=72
-    autocmd FileType python setlocal makeprg=(echo\ '[%:p]';\ rpylint\ --include-pep\ %:p)
-    autocmd FileType python setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
+    "if filereadable('./bin/pylint') && filereadable('./pylintrc')
+    autocmd FileType python setlocal makeprg=./bin/pylint\ --rcfile=./pylintrc\ --reports=n\ --output-format=parseable\ %:p
+    autocmd FileType python setlocal efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
+    "autocmd FileType python setlocal makeprg=(echo\ '[%:p]';\ rpylint\ --include-pep\ %:p)
+    "autocmd FileType python setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
     autocmd FileType python setlocal keywordprg=pydoc
     autocmd FileType python set isk-=:
     autocmd FileType python let python_highlight_all = 1
@@ -107,6 +114,12 @@ augroup PythonEvents
     au BufLeave * match
     au BufEnter * if &filetype == "python" && v:version >= 703 | set colorcolumn=80 | endif
     au BufLeave * if v:version >= 703 | set colorcolumn=0 | endif
+augroup END
+
+augroup RubyEvents
+    autocmd!
+    autocmd FileType ruby setlocal softtabstop=2
+    autocmd FileType ruby setlocal shiftwidth=2
 augroup END
 
 augroup TextEvents
@@ -426,6 +439,9 @@ nnoremap ,v V']
 " Easier omni-completion mapping
 inoremap <c-space> <c-x><c-o>
 
+vnoremap <C-j> dpV']
+vnoremap <C-k> dkPV']
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 08. Functions/Commands                                                     "
@@ -713,7 +729,9 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 09f. Syntastic                                                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-SyntasticEnable javascript
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
-let g:syntastic_auto_loc_list=1
+if has("gui_running")
+    SyntasticEnable javascript
+    let g:syntastic_enable_signs=1
+    let g:syntastic_auto_jump=1
+    let g:syntastic_auto_loc_list=1
+endif
