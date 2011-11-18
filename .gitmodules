@@ -31,3 +31,6 @@
 [submodule "bundle/xml"]
 	path = bundle/xml
 	url = https://github.com/vim-scripts/xml.vim.git
+[submodule "bundle/snipMate"]
+	path = bundle/snipMate
+	url = https://github.com/garbas/vim-snipmate.git
