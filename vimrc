@@ -295,8 +295,7 @@ if has("gui_running")
 endif
 
 " Restore last edited position (help last-position-jump).
-au BufReadPost * if line("'\"") > 0 && 
-   \  line("'\"") <= line("$") | exe "normal g'\"" | endif
+au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") && bufname('%') != 'svn-commit.tmp' | exe "normal g'\"" | endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
