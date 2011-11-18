@@ -4,9 +4,6 @@
 [submodule "bundle/argtextobj"]
 	path = bundle/argtextobj
 	url = http://github.com/vim-scripts/argtextobj.vim.git
-[submodule "bundle/bufexplorer"]
-	path = bundle/bufexplorer
-	url = http://github.com/bronson/vim-bufexplorer.git
 [submodule "bundle/snipMate"]
 	path = bundle/snipMate
 	url = http://github.com/msanders/snipmate.vim.git
