@@ -79,6 +79,10 @@ augroup END
 autocmd FileType make setlocal noet sw=8
 "au BufWritePost * if getline(1) =~ "^#!" | silent !chmod +x % | endif
 
+augroup JavascriptEvents
+    autocmd FileType javascript setlocal isk-=:
+augroup END
+
 augroup PerlEvents
     autocmd!
     autocmd FileType perl setlocal makeprg=perl\ -c\ %
