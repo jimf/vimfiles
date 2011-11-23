@@ -38,8 +38,7 @@
 set nocompatible         " Get rid of Vi compatibility mode. SET FIRST!
 
 " Update runtime path to include ~/.vim/bundle directory
-filetype off
-silent! call pathogen#runtime_append_all_bundles()
+silent! call pathogen#infect()
 silent! call pathogen#helptags()
 
 set history=500          " Number of lines of history to remember.
@@ -124,6 +123,12 @@ augroup RubyEvents
     autocmd!
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal shiftwidth=2
+augroup END
+
+augroup SassyEvents
+    autocmd!
+    autocmd FileType scss setlocal softtabstop=2
+    autocmd FileType scss setlocal shiftwidth=2
 augroup END
 
 augroup TextEvents
