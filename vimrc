@@ -164,6 +164,8 @@ augroup NewFileTemplates
     au BufNewFile *.py      :call LoadTemplate('Python')
 augroup END
 
+au FileType help setlocal nospell
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 03. Theme/Colors                                                           "
