@@ -6,7 +6,7 @@
 	url = https://github.com/vim-scripts/argtextobj.vim.git
 [submodule "snippets"]
 	path = snippets
-	url = http://github.com/jimf/snipmate-snippets.git
+	url = git@github.com:jimf/snipmate-snippets.git
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = http://github.com/majutsushi/tagbar.git
