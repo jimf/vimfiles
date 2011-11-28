@@ -3,7 +3,7 @@
 	url = http://github.com/mileszs/ack.vim.git
 [submodule "bundle/argtextobj"]
 	path = bundle/argtextobj
-	url = http://github.com/vim-scripts/argtextobj.vim.git
+	url = https://github.com/vim-scripts/argtextobj.vim.git
 [submodule "snippets"]
 	path = snippets
 	url = http://github.com/jimf/snipmate-snippets.git
