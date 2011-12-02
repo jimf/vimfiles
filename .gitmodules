@@ -52,3 +52,6 @@
 [submodule "bundle/delimitMate"]
 	path = bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "bundle/enter-indent"]
+	path = bundle/enter-indent
+	url = https://github.com/acustodioo/vim-enter-indent.git
