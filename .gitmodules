@@ -55,3 +55,6 @@
 [submodule "bundle/enter-indent"]
 	path = bundle/enter-indent
 	url = https://github.com/acustodioo/vim-enter-indent.git
+[submodule "bundle/surround"]
+	path = bundle/surround
+	url = https://github.com/tpope/vim-surround.git
