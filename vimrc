@@ -457,6 +457,9 @@ inoremap <c-space> <c-x><c-o>
 vnoremap <C-j> dpV']
 vnoremap <C-k> dkPV']
 
+inoremap <S-CR> <ESC>o
+inoremap <C-S-CR> <ESC>A;<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 08. Functions/Commands                                                     "
