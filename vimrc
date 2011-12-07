@@ -757,3 +757,12 @@ if has("gui_running")
 else
     let g:syntastic_enable_signs=0
 endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 09g. LustyJuggler / LustyExplorer                                          "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if !has('gui_running')
+    let g:LustyExplorerSuppressRubyWarning = 1
+    let g:LustyJugglerSuppressRubyWarning = 1
+endif
