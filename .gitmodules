@@ -58,3 +58,6 @@
 [submodule "bundle/surround"]
 	path = bundle/surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "bundle/lustyjuggler"]
+	path = bundle/lustyjuggler
+	url = https://github.com/sjbach/lusty.git
