@@ -73,3 +73,6 @@
 [submodule "bundle/css-color"]
 	path = bundle/css-color
 	url = https://github.com/ap/vim-css-color.git
+[submodule "bundle/ragtag"]
+	path = bundle/ragtag
+	url = https://github.com/tpope/vim-ragtag.git
