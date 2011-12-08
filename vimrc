@@ -75,6 +75,13 @@ augroup MassageFiletype
     autocmd BufRead Vagrantfile set filetype=ruby
 augroup END
 
+augroup CoffeescriptEvents
+    autocmd!
+    autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
+    autocmd FileType coffee setlocal softtabstop=2
+    autocmd FileType coffee setlocal shiftwidth=2
+augroup END
+
 autocmd FileType make setlocal noet sw=8
 "au BufWritePost * if getline(1) =~ "^#!" | silent !chmod +x % | endif
 
