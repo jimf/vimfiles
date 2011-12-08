@@ -766,3 +766,9 @@ if !has('gui_running')
     let g:LustyExplorerSuppressRubyWarning = 1
     let g:LustyJugglerSuppressRubyWarning = 1
 endif
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 09h. Zen-Coding                                                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_zen_settings = {'indentation': '  '}
