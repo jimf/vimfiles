@@ -82,3 +82,6 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "bundle/pep8-text-width"]
+	path = bundle/pep8-text-width
+	url = git@github.com:jimf/vim-pep8-text-width.git
