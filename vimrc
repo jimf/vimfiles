@@ -229,6 +229,8 @@ function! GetProjectName()
         return substitute(substitute(location, '\~/svn/packages/', '', ''), '/.*', '', '')
     elseif match(location, '\~/svn/projects/') == 0
         return substitute(substitute(location, '\~/svn/projects/[^/]\{-}/', '', ''), '/.*', '', '')
+    elseif match(location, '\~/git/') == 0
+        return substitute(substitute(location, '\~/git/', '', ''), '/.*', '', '')
     else
         return ''
     endif
@@ -236,11 +238,11 @@ endfunction
 
 function! GetMVCType()
     let parentdir = expand('%:p:h:t')
-    if parentdir == 'controllers' || parentdir == 'controller'
+    if parentdir =~ 'controller\|controllers'
         return 'controller'
-    elseif parentdir == 'model'
+    elseif parentdir == 'model\|models'
         return 'model'
-    elseif parentdir == 'templates'
+    elseif parentdir =~ 'views\|templates\|view_wrappers'
         return 'view'
     else
         return ''
