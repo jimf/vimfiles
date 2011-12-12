@@ -214,7 +214,7 @@ set wildmenu             " Enhanced commandline completion.
 set ruler                " Always show info along bottom.
 set cmdheight=2          " Commandline spans 2 rows.
 set laststatus=2         " Last window always has a statusline.
-set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h\ \ \ Line:\ %l/%L:%c
+set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%{fugitive#statusline()}%=%-14.(%l,%c/%L%V%)\ %P
 
 " Ignore these patterns during completion.
 set wildignore=*.pyc,*.egg-info/*
