@@ -362,8 +362,11 @@ nmap <C-d> :quit<CR>
 
 nmap <leader>w /[A-Z]<CR>
 
-" Extend <C-l>:
-nnoremap <C-l> :set nohls<CR><C-l>
+" More easily navigate windows.
+nnoremap <C-j> <c-w>j
+nnoremap <C-k> <c-w>k
+nnoremap <C-l> <c-w>l
+nnoremap <C-h> <c-w>h
 
 " Visual searching:
 vnoremap * y/\V<C-R>=substitute(escape(@@,"/\\"),"\n","\\\\n","ge")<CR><CR>
