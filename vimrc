@@ -705,6 +705,10 @@ function! JumpToTestsForClass()
     exec 'e ' . TestFileForCurrentClass()
 endfunction
 
+function! PresentationSettings()
+    exec 'set guifont=Monaco:h22'
+endfunction
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 09. Plugins                                                                "
