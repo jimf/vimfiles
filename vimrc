@@ -438,8 +438,8 @@ nmap <leader>' di"hr'plr'
 nmap <leader>" di'hr"plr"
 
 " Faster access to common directories:
-cmap <leader>a code/sites/aweber_app/
-cmap <leader>w code/sites/aweber_app/webroot/
+cmap <leader>a ~/svn/trunk/code/sites/aweber_app/
+cmap <leader>w ~/svn/trunk/code/sites/aweber_app/webroot/
 
 " List methods within file:
 autocmd FileType php nmap <leader>m :vimgrep /^\s*\(private \\|public \)\?function / %<CR>:cw<CR>zO
