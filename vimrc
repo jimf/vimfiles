@@ -41,6 +41,7 @@ set nocompatible         " Get rid of Vi compatibility mode. SET FIRST!
 silent! call pathogen#infect()
 silent! call pathogen#helptags()
 
+set mouse=a              " Enable the mouse for all modes.
 set history=500          " Number of lines of history to remember.
 set isk+=_,$,@,%,#,:     " Make these characters count as part of a word.
 set isfname-=-           " Make these characters NOT count as part of filename
