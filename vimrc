@@ -1,40 +1,30 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: Jim Fitzpatrick <fitzpatrick.jim@gmail.com>                    "
-"   Revision: $Rev$                                                          "
-"        URL: http://github.com/jimf/vimfiles                                "
-"                                                                            "
-" Sections:                                                                  "
-"   01. General ................. General Vim behavior                       "
-"   02. Events .................. General autocmd events                     "
-"   03. Theme/Colors ............ Colors, fonts, etc.                        "
-"   04. Vim UI .................. User interface behavior                    "
-"   05. Text Formatting/Layout .. Text, tab, indentation related             "
-"   06. Abbreviations ........... General abbreviations                      "
-"   07. Mappings ................ General mappings                           "
-"   08. Functions/Commands ...... General functions and commands             "
-"   09. Plugins                                                              "
-"     09a. FuzzyFinder                                                       "
-"     09b. Tagbar                                                            "
-"     09c. CommandT                                                          "
-"     09c. Sparkup                                                           "
-"     09e. SnipMate                                                          "
-"     09f. Syntastic                                                         "
-"                                                                            "
-" Recommended Plugins:                                                       "
-"   -> Align.vim                                                             "
-"   -> bufexplorer                                                           "
-"   -> CommandT                                                              "
-"   -> FuzzyFinder                                                           "
-"   -> FuzzyFinderTextMate                                                   "
-"   -> MRU.vim                                                               "
-"   -> pathogen                                                              "
-"   -> snipMate.vim                                                          "
-"   -> Tagbar                                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"-------------------------------------------------------------------------{{{1
+" Maintainer: Jim Fitzpatrick <fitzpatrick.jim@gmail.com>                    |
+"   Revision: $Rev$                                                          |
+"        URL: http://github.com/jimf/vimfiles                                |
+"                                                                            |
+" Sections:                                                                  |
+"   01. General ................. General Vim behavior                       |
+"   02. Events .................. General autocmd events                     |
+"   03. Theme/Colors ............ Colors, fonts, etc.                        |
+"   04. Vim UI .................. User interface behavior                    |
+"   05. Text Formatting/Layout .. Text, tab, indentation related             |
+"   06. Abbreviations ........... General abbreviations                      |
+"   07. Mappings ................ General mappings                           |
+"   08. Functions/Commands ...... General functions and commands             |
+"   09. Plugins                                                              |
+"     09a. CommandT                                                          |
+"     09b. LustyJuggler / LustyExplorer                                      |
+"     09c. SnipMate                                                          |
+"     09c. Surround                                                          |
+"     09e. Syntastic                                                         |
+"     09f. Tabular                                                           |
+"     09g. Tagbar                                                            |
+"     09h. Zen-Coding                                                        |
+"-------------------------------------------------------------------------}}}1
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 01. General                                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" | 01. General ................. General Vim behavior -------------------{{{1
+"  \_________________________________________________________________________|
 set nocompatible         " Get rid of Vi compatibility mode. SET FIRST!
 
 " Update runtime path to include ~/.vim/bundle directory
@@ -51,14 +41,13 @@ set autowrite            " Automatically write changes when running :make.
 set switchbuf=useopen    " See :he switchbuf
 set tags+=tags;$HOME     " Look for tags in parent dirs
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 02. Events                                                                 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}1
+" | 02. Events .................. General autocmd events -----------------{{{1
+"  \_________________________________________________________________________|
 filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 
-" Make sure the correct filetype is applied to these files:
-augroup MassageFiletype
+augroup MassageFiletype                                                 " {{{2
+    " Make sure the correct filetype is applied to these files:
     autocmd!
     autocmd BufRead *.ctp set filetype=php
     autocmd BufRead *.erb set filetype=ruby
@@ -75,22 +64,30 @@ augroup MassageFiletype
     autocmd BufRead *.zsh-theme set filetype=zsh
     autocmd BufRead Vagrantfile set filetype=ruby
 augroup END
-
-augroup CoffeescriptEvents
+                                                                        " }}}2
+augroup CoffeescriptEvents                                              " {{{2
     autocmd!
     autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
     autocmd FileType coffee setlocal softtabstop=2
     autocmd FileType coffee setlocal shiftwidth=2
 augroup END
-
-autocmd FileType make setlocal noet sw=8
-"au BufWritePost * if getline(1) =~ "^#!" | silent !chmod +x % | endif
-
-augroup JavascriptEvents
+                                                                        " }}}2
+augroup HelpEvents                                                      " {{{2
+    autocmd!
+    au FileType help setlocal nospell
+augroup END
+                                                                        " }}}2
+augroup JavascriptEvents                                                " {{{2
+    autocmd!
     autocmd FileType javascript setlocal isk-=:
 augroup END
-
-augroup PerlEvents
+                                                                        " }}}2
+augroup MakefileEvents                                                  " {{{2
+    autocmd!
+    autocmd FileType make setlocal noet sw=8
+augroup END
+                                                                        " }}}2
+augroup PerlEvents                                                      " {{{2
     autocmd!
     autocmd FileType perl setlocal makeprg=perl\ -c\ %
     autocmd FileType perl setlocal errorformat=%f:%l:%m
@@ -98,17 +95,20 @@ augroup PerlEvents
     autocmd FileType perl set path+=~/svn/trunk/code/awlib/AW,/etc/perl,/usr/local/lib/perl/5.8.8,/usr/local/share/perl/5.8.8,/usr/lib/perl5,/usr/share/perl5,/usr/lib/perl/5.8,/usr/share/perl/5.8
     autocmd FileType perl nmap <leader>m :vimgrep /^\s*sub / %<CR>:cw<CR>zO
 augroup END
-
-augroup PhpEvents
+                                                                        " }}}2
+augroup PhpEvents                                                       " {{{2
     autocmd!
     autocmd FileType php match Error /}\zs \/\/ \?close.*$/
     autocmd FileType php setlocal isk-=-
     autocmd FileType php setlocal makeprg=php\ -l\ %
     autocmd FileType php setlocal errorformat=%t:\ %m\ in\ %f\ on\ line\ %l
     autocmd FileType php setlocal keywordprg=~/bin/php_doc
-augroup END
 
-augroup PythonEvents
+    " List methods within file:
+    autocmd FileType php nnoremap <leader>m :vimgrep /^\s*\(private \\|public \)\?function / %<CR>:cw<CR>zO
+augroup END
+                                                                        " }}}2
+augroup PythonEvents                                                    " {{{2
     autocmd!
     autocmd FileType python set textwidth=72
     "if filereadable('./bin/pylint') && filereadable('./pylintrc')
@@ -126,26 +126,33 @@ augroup PythonEvents
     au BufEnter * if &filetype == "python" && v:version >= 703 | set colorcolumn=80 | endif
     au BufLeave * if v:version >= 703 | set colorcolumn=0 | endif
 augroup END
-
-augroup RubyEvents
+                                                                        " }}}2
+augroup RubyEvents                                                      " {{{2
     autocmd!
     autocmd FileType ruby setlocal softtabstop=2
     autocmd FileType ruby setlocal shiftwidth=2
 augroup END
-
-augroup SassyEvents
+                                                                        " }}}2
+augroup SassyEvents                                                     " {{{2
     autocmd!
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal shiftwidth=2
 augroup END
-
-augroup TextEvents
+                                                                        " }}}2
+augroup SvnEvents                                                       " {{{2
+    autocmd!
+    if version >= 700
+        autocmd FileType svn setlocal spell spelllang=en_us
+    endif
+augroup END
+                                                                        " }}}2
+augroup TextEvents                                                      " {{{2
     autocmd!
     autocmd FileType txt setlocal wrap
     autocmd FileType txt setlocal spell spelllang=en_us
 augroup END
-
-" Filetype completion
+                                                                        " }}}2
+" Filetype completion                                                   " {{{2
 set complete=.
 if filereadable($HOME."/.vim/complete")
     set complete+=k$HOME/.vim/complete
@@ -159,8 +166,8 @@ if version >= 700
    autocmd FileType php set omnifunc=phpcomplete#CompletePHP
    autocmd FileType c set omnifunc=ccomplete#Complete
 endif
-
-augroup NewFileTemplates
+                                                                        " }}}2
+augroup NewFileTemplates                                                " {{{2
     autocmd!
     au BufNewFile *.pm      :call LoadTemplate('Moose')
     au BufNewFile *.pl      :call LoadTemplate('Perl')
@@ -170,20 +177,18 @@ augroup NewFileTemplates
     au BufNewFile *_test.py :call LoadTemplate('PythonTest')
     au BufNewFile test_*.py :call LoadTemplate('PythonTest')
     au BufNewFile *.py      :call LoadTemplate('Python')
-augroup END
-
-au FileType help setlocal nospell
+augroup END                                                             " }}}2
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 03. Theme/Colors                                                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}1
+" | 03. Theme/Colors ............ Colors, fonts, etc. --------------------{{{1
+"  \_________________________________________________________________________|
 set t_Co=256             " Enable 256-color mode.
 syntax enable            " Enable syntax highlighting (previously syntax on).
 
 syn keyword Todo contained TODO FIXME XXX NOTE
 hi link awError Error
-match awError /^[} \t]*\zs\(else\?\)\? \?if(/"
+match awError /^[} \t]*\zs\(else\?\)\? \?if(/
 
 if has("gui_running")
     if filereadable($HOME."/.vim/colors/xoria256.vim") || filereadable($VIMRUNTIME."/colors/xoria256.vim")
@@ -195,10 +200,9 @@ else
     endif
 endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 04. Vim UI                                                                 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}1
+" | 04. Vim UI .................. User interface behavior ----------------{{{1
+"  \_________________________________________________________________________|
 set hidden               " Allow buffer switching without being forced to save
 set noerrorbells         " Disable error bells.
 set ve=block             " Allow free movement in visual-block mode.
@@ -324,9 +328,9 @@ au BufReadPost *
   \ endif
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 05. Text Formatting/Layout                                                 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}1
+" | 05. Text Formatting/Layout .. Text, tab, indentation related ---------{{{1
+"  \_________________________________________________________________________|
 set fo=tcrqn             " See help (complex).
 set ai                   " Auto-indent.
 "set si                   " Smart indent.      \ Replaced w/ filetype indent
@@ -340,10 +344,9 @@ set expandtab            " Use spaces instead of tabs.
 set smarttab             " Use tabs at the start of a line, spaces elsewhere.
 set nowrap               " Don't wrap text.
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 06. Abbreviations                                                          "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}1
+" | 06. Abbreviations ........... General abbreviations ------------------{{{1
+"  \_________________________________________________________________________|
 iab dateR <C-r>=strftime("%a, %d %b %Y %H:%M:%S %z")<CR>
 iab pgdate <C-r>=strftime("%Y-%m-%d 00:00:00")<CR>
 iab pgtime <C-r>=strftime("%Y-%m-%d %H:%M:%S")<CR>
@@ -353,17 +356,18 @@ iab lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit
 iab llorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi
 iab lllorem Lorem ipsum dolor sit amet, consectetur adipiscing elit.  Etiam lacus ligula, accumsan id imperdiet rhoncus, dapibus vitae arcu.  Nulla non quam erat, luctus consequat nisi.  Integer hendrerit lacus sagittis erat fermentum tincidunt.  Cras vel dui neque.  In sagittis commodo luctus.  Mauris non metus dolor, ut suscipit dui.  Aliquam mauris lacus, laoreet et consequat quis, bibendum id ipsum.  Donec gravida, diam id imperdiet cursus, nunc nisl bibendum sapien, eget tempor neque elit in tortor
 
+                                                                        " }}}1
+" | 07. Mappings ................ General mappings -----------------------{{{1
+"  \_________________________________________________________________________|
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 07. Mappings                                                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NORMAL mode ------------------------------------------------------------{{{2
 " Make Y more logical:
-nmap Y y$
+nnoremap Y y$
 
 " Remap ^d to quit vim:
-nmap <C-d> :quit<CR>
+nnoremap <C-d> :quit<CR>
 
-nmap <leader>w /[A-Z]<CR>
+nnoremap <leader>w /[A-Z]<CR>
 
 " More easily navigate windows.
 nnoremap <C-j> <c-w>j
@@ -371,45 +375,8 @@ nnoremap <C-k> <c-w>k
 nnoremap <C-l> <c-w>l
 nnoremap <C-h> <c-w>h
 
-" Visual searching:
-vnoremap * y/\V<C-R>=substitute(escape(@@,"/\\"),"\n","\\\\n","ge")<CR><CR>
-vnoremap # y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>
-
-" Remap F1 to escape, since this is a common mistype:
-map <F1> <Esc>
-imap <F1> <Esc>
-
-" Change the cwd of vim to the main directory of our app.
-noremap <F2> :cd <C-R>=expand("%:p:h")<CR><CR>
-
-" Commit all open buffers to SVN.
-"map <F3> :b <C-a><HOME><Right><C-w>!svn ci -m ""<LEFT>
-"map <F3> :b <C-a><HOME><Right><C-w>!~/svnci.sh<CR>
-map <F3> :!open <C-r>=expand("%:h")<CR><CR>
-
-" Run make on current file.
-map <silent> <F5> :make<CR>:cw<CR>
-
-" SVN Diff the given file.
-map <F6> :!/usr/bin/svn diff --diff-cmd /Applications/RoaringDiff.app/Contents/MacOS/RoaringDiff <C-r>%<CR>
-
 " Turn on/off search highlighting.
-map <silent> <leader>h :se invhlsearch<CR>
-
-" Turn on/off highlighting of misspelled words.
-if version >= 700
-    autocmd FileType svn setlocal spell spelllang=en_us
-    "map <F6> <Esc>:setlocal nospell<CR>
-endif
-
-
-" Complete some brackets to create matching end-bracket.  
-"inoremap  { {<CR>}<C-O>O
-"inoremap [ []<LEFT>
-"inoremap ( () <LEFT><LEFT>
-"inoremap " ""<LEFT>
-"inoremap ' ''<LEFT>
-inoremap <leader><tab>  <c-r>=MakeBlock()<cr>
+nnoremap <silent> <leader>h :se invhlsearch<CR>
 
 " Reformat/reindent pasted text.
 nnoremap <Esc>P P'[v']=
@@ -419,47 +386,20 @@ nnoremap <Esc>p p'[v']=
 nnoremap  <silent>  <space> :exe 'silent! normal! za'.(foldlevel('.')?'':'l')<cr>
 
 " Switch between buffers.
-map <right> <ESC>:bn<RETURN>
-map <left> <ESC>:bp<RETURN>
-
-" Make middle-click paste indent-friendly.
-"set mouse=a
-"imap <MiddleMouse> <ESC>:set paste<CR>"*p:set paste!<CR>'[v']=
-
-" Columnate arrays/lists.
-"vmap <silent> <leader>= :!sed 's/^\s*//' \| sed 's/ *\(=>\?\) */ \1 /' \| column -t -s= \| sed -r 's/(\s*)   (>\| )/\1 =\2/'<CR>gv=
-vmap <silent> <leader>= :Align => =<CR>
-
-" Omni-complete class functions: (this can get slow...)
-"imap :: ::<C-x><C-o><C-n>
-"imap -> -><C-x><C-o><C-n>
-
-" Switch between double/single quotes:
-nmap <leader>' di"hr'plr'
-nmap <leader>" di'hr"plr"
-
-" Faster access to common directories:
-cmap <leader>a ~/svn/trunk/code/sites/aweber_app/
-cmap <leader>w ~/svn/trunk/code/sites/aweber_app/webroot/
-
-" List methods within file:
-autocmd FileType php nmap <leader>m :vimgrep /^\s*\(private \\|public \)\?function / %<CR>:cw<CR>zO
+nnoremap <right> <ESC>:bn<RETURN>
+nnoremap <left> <ESC>:bp<RETURN>
 
 " Add phpDoc-style comment to function:
-nmap <leader>* ?function<CR>f(yi(O/**<CR><CR><CR><Esc>p'[a <Esc>:s/\$/@/ge<CR>:s/,\s*/\r * /ge<CR>o/<Esc>v?\/\*\*<CR>=jA 
+nnoremap <leader>* ?function<CR>f(yi(O/**<CR><CR><CR><Esc>p'[a <Esc>:s/\$/@/ge<CR>:s/,\s*/\r * /ge<CR>o/<Esc>v?\/\*\*<CR>=jA 
 
 " Fill in a PHP function argument list:
-nmap <silent> <leader>k :read !lynx -dump /usr/share/doc/php-doc/html/function.<C-R>=tr(expand("<cword>"), "_", "-")<CR>.html \| grep -A2 Description \| egrep -o "\(.*\)"<CR>kgJ
+nnoremap <silent> <leader>k :read !lynx -dump /usr/share/doc/php-doc/html/function.<C-R>=tr(expand("<cword>"), "_", "-")<CR>.html \| grep -A2 Description \| egrep -o "\(.*\)"<CR>kgJ
 
 " Convert between underscore and camelcase:
-nmap <leader>- ciw<C-R>=SwitchStyle("<C-R>"")<CR><ESC>
-
-" SVN blame a block of text:
-vmap <leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+nnoremap <leader>- ciw<C-R>=SwitchStyle("<C-R>"")<CR><ESC>
 
 " Faster :e
-"map ,e :e <C-R>=expand("%:p:h")."/"<CR><C-D>
-map ,e :e <C-R>=Look()<CR><C-D>
+nnoremap ,e :e <C-R>=Look()<CR><C-D>
 
 " Call RunAllTests
 nnoremap <leader>a :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
@@ -467,26 +407,57 @@ nnoremap <leader>a :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
 " Re-select paste
 nnoremap ,v V']
 
+" Run make on current file.
+nnoremap <silent> <F5> :make<CR>:cw<CR>
+
+" SVN Diff the given file.
+nnoremap <F6> :!/usr/bin/svn diff --diff-cmd /Applications/RoaringDiff.app/Contents/MacOS/RoaringDiff <C-r>%<CR>
+
+                                                                        " }}}2
+" INSERT mode ------------------------------------------------------------{{{2
+inoremap <leader><tab>  <c-r>=MakeBlock()<cr>
+
+" Make middle-click paste indent-friendly.
+"inoremap <MiddleMouse> <ESC>:set paste<CR>"*p:set paste!<CR>'[v']=
+
 " Easier omni-completion mapping
 inoremap <c-space> <c-x><c-o>
 
-vnoremap <C-j> dpV']
-vnoremap <C-k> dkPV']
-
+" Next-line shortcuts
 inoremap <S-CR> <ESC>o
 inoremap <C-S-CR> <ESC>A;<CR>
 
+                                                                        " }}}2
+" VISUAL mode ------------------------------------------------------------{{{2
+" Visual searching:
+vnoremap * y/\V<C-R>=substitute(escape(@@,"/\\"),"\n","\\\\n","ge")<CR><CR>
+vnoremap # y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 08. Functions/Commands                                                     "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CdToProjectBase()
+" SVN blame a block of text:
+vnoremap <leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+" Bubble text
+vnoremap <C-j> dpV']
+vnoremap <C-k> dkPV']
+
+                                                                        " }}}2
+" COMMAND mode -----------------------------------------------------------{{{2
+" Faster access to common directories:
+cnoremap <leader>a ~/svn/trunk/code/sites/aweber_app/
+cnoremap <leader>w ~/svn/trunk/code/sites/aweber_app/webroot/
+
+                                                                        " }}}2
+
+                                                                        " }}}1
+" | 08. Functions/Commands ...... General functions and commands ---------{{{1
+"  \_________________________________________________________________________|
+function! CdToProjectBase() " --------------------------------------------{{{2
    let _dir = strpart(expand("%:p:h"), 0, matchend(expand("%:p:h"), "_app"))
    exec "cd " . _dir
    unlet _dir
 endfunction
-
-function! Look()
+                                                                        " }}}2
+function! Look() " -------------------------------------------------------{{{2
     let working = expand('%:h')
     if working == ''
         return ''
@@ -494,33 +465,33 @@ function! Look()
         return working . '/'
     endif
 endfunction
-
-function! Underscore2Camelcase(text)
+                                                                        " }}}2
+function! Underscore2Camelcase(text) " -----------------------------------{{{2
    return substitute(a:text, "_\\([a-z]\\)", "\\U\\1", "g")
 endfunction
-
-function! Camelcase2Underscore(text)
+                                                                        " }}}2
+function! Camelcase2Underscore(text) " -----------------------------------{{{2
    return substitute(a:text, "\\C\\([A-Z]\\)", "_\\L\\1", "g")
 endfunction
-
-function! SwitchStyle(text)
+                                                                        " }}}2
+function! SwitchStyle(text) " --------------------------------------------{{{2
    if match(a:text, "_") > 0
       return Underscore2Camelcase(a:text)
    else
       return Camelcase2Underscore(a:text)
    fi
 endfunction
-
-function! CompleteBlock()
+                                                                        " }}}2
+function! CompleteBlock() " ----------------------------------------------{{{2
    return ") {\<CR>}\<Esc>kf)i"
 endfunction
-
-function! MakeBlock()
+                                                                        " }}}2
+function! MakeBlock() " --------------------------------------------------{{{2
    return "(" . CompleteBlock()
 endfunction
-
-" Smart tab completion.
-function! InsertTabWrapper()
+                                                                        " }}}2
+function! InsertTabWrapper() " -------------------------------------------{{{2
+    " Smart tab completion.
    let col = col('.') - 1
    let line = getline('.')
    if (match(line, '\(require\|include\)') >= 0)
@@ -537,21 +508,21 @@ function! InsertTabWrapper()
    endif
 endfunction
 "inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-
-function! DimLogging()
+                                                                        " }}}2
+function! DimLogging() " -------------------------------------------------{{{2
     exec "hi DimmedLogging ctermfg=darkgray guibg=#333333"
     exec "match DimmedLogging /^\s*$self->log.*$/"
 endfunction
-
-function! SetWidth(width)
+                                                                        " }}}2
+function! SetWidth(width) " ----------------------------------------------{{{2
     execute "set tabstop=" . a:width
     execute "set softtabstop=" . a:width
     execute "set shiftwidth=" . a:width
     echo "Indentation width set to " . a:width
 endfunction
 command! -nargs=1 SetWidth call SetWidth(<q-args>)
-
-function! OpenTests(pbase, tbase, tglob)
+                                                                        " }}}2
+function! OpenTests(pbase, tbase, tglob) " -------------------------------{{{2
     " TODO: use finddir with a contat'ed let/expand to recursively search for
     " the tests/ directory
     let testdir = substitute(expand("%:p:r"), a:pbase, a:tbase, "")
@@ -572,8 +543,8 @@ function! OpenTests(pbase, tbase, tglob)
 endfunction
 au FileType perl command! -nargs=0 Tests call OpenTests("awlib", "awlib/tests", "*.t")
 au FileType python command! -nargs=0 Tests call OpenTests("Python", "Python/tests", "_test.py")
-
-function! OpenPackageTests()
+                                                                        " }}}2
+function! OpenPackageTests() " -------------------------------------------{{{2
     let testdir = finddir("tests", expand("%:h").";")
     if strlen(testdir) > 0
         execute "e " . testdir
@@ -581,8 +552,8 @@ function! OpenPackageTests()
         echo "Test directory not found"
     endif
 endfunction
-
-function! LoadTemplate(template_name)
+                                                                        " }}}2
+function! LoadTemplate(template_name) " ----------------------------------{{{2
     if !exists("g:templates_loaded")
         let g:templates_loaded = {}
     endif
@@ -596,8 +567,8 @@ function! LoadTemplate(template_name)
         endif
     endif
 endfunction
-
-function! Pkg(name)
+                                                                        " }}}2
+function! Pkg(name) " ----------------------------------------------------{{{2
     let target = substitute(system("$HOME/bin/pkg " . shellescape(a:name)), '\n', '', '')
     if isdirectory(target)
         execute "cd " . target
@@ -606,29 +577,29 @@ function! Pkg(name)
     endif
 endfunction
 command! -nargs=1 Pkg call Pkg(<q-args>)
-
-function! RunTests(target, args)
+                                                                        " }}}2
+function! RunTests(target, args) " ---------------------------------------{{{2
     silent ! echo
     exec 'silent ! echo -e "\033[1;36mRunning tests in ' . a:target . '\033[0m"'
     silent w
     exec "make " . a:target . " " . a:args
 endfunction
-
-function! ClassToFilename(class_name)
+                                                                        " }}}2
+function! ClassToFilename(class_name) " ----------------------------------{{{2
     let understored_class_name = substitute(a:class_name, '\(.\)\(\u\)', '\1_\U\2', 'g')
     let file_name = substitute(understored_class_name, '\(\u\)', '\L\1', 'g')
     return file_name
 endfunction
-
-function! ModuleTestPath()
+                                                                        " }}}2
+function! ModuleTestPath() " ---------------------------------------------{{{2
     let file_path = @%
     let components = split(file_path, '/')
     let path_without_extension = substitute(file_path, '\.py$', '', '')
     let test_path = 'tests/unit/' . path_without_extension
     return test_path
 endfunction
-
-function! NameOfCurrentClass()
+                                                                        " }}}2
+function! NameOfCurrentClass() " -----------------------------------------{{{2
     let save_cursor = getpos(".")
     normal $<cr>
     call PythonDec('class', -1)
@@ -638,20 +609,20 @@ function! NameOfCurrentClass()
     let class_name = ClassToFilename(match_result[1])
     return class_name
 endfunction
-
-function! TestFileForCurrentClass()
+                                                                        " }}}2
+function! TestFileForCurrentClass() " ------------------------------------{{{2
     let class_name = NameOfCurrentClass()
     let test_file_name = ModuleTestPath() . '/test_' . class_name . '.py'
     return test_file_name
 endfunction
-
-function! TestModuleForCurrentFile()
+                                                                        " }}}2
+function! TestModuleForCurrentFile() " -----------------------------------{{{2
     let test_path = ModuleTestPath()
     let test_module = substitute(test_path, '/', '.', 'g')
     return test_module
 endfunction
-
-function! RunTestsForFile(args)
+                                                                        " }}}2
+function! RunTestsForFile(args) " ----------------------------------------{{{2
     if @% =~ 'test_'
         call RunTests('%', a:args)
     else
@@ -659,8 +630,8 @@ function! RunTestsForFile(args)
         call RunTests(test_file_name, a:args)
     endif
 endfunction
-
-function! RunAllTests(args)
+                                                                        " }}}2
+function! RunAllTests(args) " --------------------------------------------{{{2
     silent ! echo
     silent ! echo -e "\033[1;36mRunning all unit tests\033[0m"
     silent w
@@ -669,8 +640,8 @@ function! RunAllTests(args)
     set errorformat=%f:%l:\ In\ %.%#:\ fail:\ %m
     exec "make!" . a:args
 endfunction
-
-function! JumpToError()
+                                                                        " }}}2
+function! JumpToError() " ------------------------------------------------{{{2
     if getqflist() != []
         for error in getqflist()
             if error['valid']
@@ -687,87 +658,63 @@ function! JumpToError()
         echo "All tests passed"
     endif
 endfunction
-
-function! RedBar()
+                                                                        " }}}2
+function! RedBar() " -----------------------------------------------------{{{2
     hi RedBar ctermfg=white ctermbg=red guibg=red
     echohl RedBar
     echon repeat(" ",&columns - 1)
     echohl
 endfunction
-
-function! GreenBar()
+                                                                        " }}}2
+function! GreenBar() " ---------------------------------------------------{{{2
     hi GreenBar ctermfg=white ctermbg=green guibg=green
     echohl GreenBar
     echon repeat(" ",&columns - 1)
     echohl
 endfunction
-
-function! JumpToTestsForClass()
+                                                                        " }}}2
+function! JumpToTestsForClass() " ----------------------------------------{{{2
     exec 'e ' . TestFileForCurrentClass()
 endfunction
-
-function! PresentationSettings()
+                                                                        " }}}2
+function! PresentationSettings() " ---------------------------------------{{{2
     exec 'set guifont=Monaco:h22'
 endfunction
+                                                                        " }}}2
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09. Plugins                                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09a. FuzzyFinder                                                           "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Trying CommandT in place of this plugin.
-"let g:fuzzy_ignore="*.pyc;*/rel/*;*/branches/*;*/tags/*;*/build/*"
-"let g:fuzzy_ceiling=50000
-"let g:fuzzy_matching_limit=30
-"map ,t :FuzzyFinderTextMate<CR>
-"map ,b :FuzzyFinderBuffer<CR>
-"map ,m :FuzzyFinderMruFile<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09b. Tagbar                                                                "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-"let g:ctags_statusline=1          " Display function name in status bar
-"let generate_tags=1               " Automatically start script
-"let Tlist_Use_Horiz_Window=0      " Display tag results in vertical window
-"nnoremap TT :TlistToggle<CR>
-""let Tlist_Use_Right_Window=1
-"let Tlist_Compact_Format=1
-"let Tlist_Exit_OnlyWindow=1
-"let Tlist_GainFocus_On_ToggleOpen=1
-"let Tlist_File_Fold_Auto_Close=1
-"let Tlist_WinWidth=40
-nnoremap TT :TagbarToggle<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09c. CommandT                                                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}1
+" | 09. Plugins ................. Plugin-specific settings ---------------{{{1
+" |                                                                          |
+" | 09a. CommandT                     |-----------------------------------{{{2
+"  \_________________________________________________________________________|
 map ,t :CommandT<CR>
 nnoremap ,b :CommandTBuffer<CR>
 
+                                                                        " }}}2
+" | 09b. LustyJuggler / LustyExplorer |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+if !has('gui_running')
+    let g:LustyExplorerSuppressRubyWarning = 1
+    let g:LustyJugglerSuppressRubyWarning = 1
+endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09d. Sparkup                                                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:sparkupNextMapping='<c-x>'
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09e. SnipMate                                                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}2
+" | 09c. SnipMate                     |-----------------------------------{{{2
+"  \_________________________________________________________________________|
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
     exec "source " . $HOME . "/.vim/snippets/support_functions.vim"
 endif
 
+                                                                        " }}}2
+" | 09d. Surround                     |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+" Switch between double/single quotes:
+nmap  <leader>'  cs"'
+nmap  <leader>"  cs'"
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09f. Syntastic                                                             "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}2
+" | 09e. Syntastic                    |-----------------------------------{{{2
+"  \_________________________________________________________________________|
 if has("gui_running")
     let g:syntastic_mode_map = { 'mode': 'active',
                                \ 'active_filetypes': ['javascript', 'python'],
@@ -779,17 +726,23 @@ else
     let g:syntastic_enable_signs=0
 endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09g. LustyJuggler / LustyExplorer                                          "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if !has('gui_running')
-    let g:LustyExplorerSuppressRubyWarning = 1
-    let g:LustyJugglerSuppressRubyWarning = 1
-endif
+                                                                        " }}}2
+" | 09f. Tabular                      |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+" Columnate arrays/lists.
+vnoremap <silent> <leader>= :Tab /=<CR>
+vnoremap <silent> <leader>: :Tab /:\zs/l0l0<CR>
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 09h. Zen-Coding                                                            "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+                                                                        " }}}2
+" | 09g. Tagbar                       |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+nnoremap TT :TagbarToggle<CR>
+
+                                                                        " }}}2
+" | 09h. Zen-Coding                   |-----------------------------------{{{2
+"  \_________________________________________________________________________|
 let g:user_zen_settings = {'indentation': '  '}
+
+                                                                        " }}}2
+" }}}1 vim: foldmethod=marker:foldlevel=0:fml=1
