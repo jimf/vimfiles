@@ -217,6 +217,8 @@ set siso=5               " Keep 5 lines for scope.
 set nu                   " Show line numbers.
 set wildmenu             " Enhanced commandline completion.
 set ruler                " Always show info along bottom.
+set splitbelow           " Open new horizontal splits below the current.
+set splitright           " Open new vertical splits to the right.
 set cmdheight=2          " Commandline spans 2 rows.
 set laststatus=2         " Last window always has a statusline.
 set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%{fugitive#statusline()}%=%-14.(%l,%c/%L%V%)\ %P
