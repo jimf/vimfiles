@@ -221,7 +221,11 @@ set splitbelow           " Open new horizontal splits below the current.
 set splitright           " Open new vertical splits to the right.
 set cmdheight=2          " Commandline spans 2 rows.
 set laststatus=2         " Last window always has a statusline.
-set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%{fugitive#statusline()}%=%-14.(%l,%c/%L%V%)\ %P
+if exists("*fugitive#statusline")
+    set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%{fugitive#statusline()}%=%-14.(%l,%c/%L%V%)\ %P
+else
+    set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%=%-14.(%l,%c/%L%V%)\ %P
+endif
 
 " Ignore these patterns during completion.
 set wildignore=*.pyc,*.egg-info/*
@@ -693,7 +697,16 @@ map ,t :CommandT<CR>
 nnoremap ,b :CommandTBuffer<CR>
 
                                                                         " }}}2
-" | 09b. LustyJuggler / LustyExplorer |-----------------------------------{{{2
+" | 09b. Gist                         |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:gist_github_hostname = 'github.colo.lair'
+let g:gist_force_http = 1
+let g:gist_open_browser_after_post = 1
+if filereadable($HOME."/.vimrc_secret_git")
+    exec "source ".$HOME."/.vimrc_secret_git"
+endif
+                                                                        " }}}2
+" | 09c. LustyJuggler / LustyExplorer |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if !has('gui_running')
     let g:LustyExplorerSuppressRubyWarning = 1
@@ -701,21 +714,21 @@ if !has('gui_running')
 endif
 
                                                                         " }}}2
-" | 09c. SnipMate                     |-----------------------------------{{{2
+" | 09d. SnipMate                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
     exec "source " . $HOME . "/.vim/snippets/support_functions.vim"
 endif
 
                                                                         " }}}2
-" | 09d. Surround                     |-----------------------------------{{{2
+" | 09e. Surround                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Switch between double/single quotes:
 nmap  <leader>'  cs"'
 nmap  <leader>"  cs'"
 
                                                                         " }}}2
-" | 09e. Syntastic                    |-----------------------------------{{{2
+" | 09f. Syntastic                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if has("gui_running")
     let g:syntastic_mode_map = { 'mode': 'active',
@@ -729,7 +742,7 @@ else
 endif
 
                                                                         " }}}2
-" | 09f. Tabular                      |-----------------------------------{{{2
+" | 09g. Tabular                      |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Columnate arrays/lists.
 vnoremap <silent> <leader>= :Tab /=<CR>
@@ -737,14 +750,15 @@ vnoremap <silent> <leader>: :Tab /:\zs/l0l0<CR>
 
 
                                                                         " }}}2
-" | 09g. Tagbar                       |-----------------------------------{{{2
+" | 09h. Tagbar                       |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 nnoremap TT :TagbarToggle<CR>
 
                                                                         " }}}2
-" | 09h. Zen-Coding                   |-----------------------------------{{{2
+" | 09i. Zen-Coding                   |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:user_zen_settings = {'indentation': '  '}
 
                                                                         " }}}2
+
 " }}}1 vim: foldmethod=marker:foldlevel=0:fml=1
