@@ -125,6 +125,7 @@ augroup PythonEvents                                                    " {{{2
     au BufLeave * match
     au BufEnter * if &filetype == "python" && v:version >= 703 | set colorcolumn=80 | endif
     au BufLeave * if v:version >= 703 | set colorcolumn=0 | endif
+    au BufWritePost * if &filetype == "python" | call RunAllTests('unit-test') | endif
 augroup END
                                                                         " }}}2
 augroup RubyEvents                                                      " {{{2
@@ -638,45 +639,12 @@ function! RunTestsForFile(args) " ----------------------------------------{{{2
 endfunction
                                                                         " }}}2
 function! RunAllTests(args) " --------------------------------------------{{{2
-    silent ! echo
-    silent ! echo -e "\033[1;36mRunning all unit tests\033[0m"
-    silent w
-    let avatarpath=substitute(getcwd(), $HOME . '/svn', '/mnt/hgfs', '')
-    exec "set makeprg=ssh\\ avatar\\ 'cd\\ " . avatarpath . "\\ &&\\ sudo\\ python\\ setup.py\\ -q\\ nosetests\\ --config=/dev/null\\ --machine-out'"
-    set errorformat=%f:%l:\ In\ %.%#:\ fail:\ %m
-    exec "make!" . a:args
-endfunction
-                                                                        " }}}2
-function! JumpToError() " ------------------------------------------------{{{2
-    if getqflist() != []
-        for error in getqflist()
-            if error['valid']
-                break
-            endif
-        endfor
-        let error_message = substitute(error['text'], '^ *', '', 'g')
-        silent cc!
-        exec ":sbuffer " . error['bufnr']
-        call RedBar()
-        echo error_message
-    else
-        call GreenBar()
-        echo "All tests passed"
+    if filereadable('./Makefile')
+        silent ! echo
+        exec "set makeprg=make\\ NOSE='bin/nosetests\\ --no-color\\ --machine-out'"
+        set errorformat=%f:%l:\ fail:\ %m
+        exec "AsyncMakeGreen " . a:args
     endif
-endfunction
-                                                                        " }}}2
-function! RedBar() " -----------------------------------------------------{{{2
-    hi RedBar ctermfg=white ctermbg=red guibg=red
-    echohl RedBar
-    echon repeat(" ",&columns - 1)
-    echohl
-endfunction
-                                                                        " }}}2
-function! GreenBar() " ---------------------------------------------------{{{2
-    hi GreenBar ctermfg=white ctermbg=green guibg=green
-    echohl GreenBar
-    echon repeat(" ",&columns - 1)
-    echohl
 endfunction
                                                                         " }}}2
 function! JumpToTestsForClass() " ----------------------------------------{{{2

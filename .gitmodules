@@ -91,3 +91,12 @@
 [submodule "bundle/gist"]
 	path = bundle/gist
 	url = git@github.com:jimf/gist-vim.git
+[submodule "bundle/AsyncCommand"]
+	path = bundle/AsyncCommand
+	url = https://github.com/pydave/AsyncCommand.git
+[submodule "bundle/async-make-green"]
+	path = bundle/async-make-green
+	url = git@github.com:jimf/vim-async-make-green.git
+[submodule "bundle/red-green"]
+	path = bundle/red-green
+	url = git@github.com:jimf/vim-red-green.git
