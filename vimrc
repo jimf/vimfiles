@@ -319,7 +319,8 @@ if has("gui_running")
     set guioptions-=L
     set guioptions-=r
     set guicursor=a:blinkon0 " Disable gui cursor blinking.
-    set guifont=Monaco:h12
+    "set guifont=Monaco:h12
+    set guifont=Menlo\ Regular\ for\ Powerline:h12
     set cursorline
     hi cursorline guibg=#333333 
     hi CursorColumn guibg=#333333
@@ -652,7 +653,8 @@ function! JumpToTestsForClass() " ----------------------------------------{{{2
 endfunction
                                                                         " }}}2
 function! PresentationSettings() " ---------------------------------------{{{2
-    exec 'set guifont=Monaco:h22'
+    "exec 'set guifont=Monaco:h22'
+    exec 'set guifont=Menlo Regular for Powerline:h22'
 endfunction
                                                                         " }}}2
 
@@ -680,7 +682,10 @@ if !has('gui_running')
     let g:LustyExplorerSuppressRubyWarning = 1
     let g:LustyJugglerSuppressRubyWarning = 1
 endif
-
+                                                                        " }}}2
+" | 09d. Powerline                    |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:Powerline_symbols = 'fancy'
                                                                         " }}}2
 " | 09d. SnipMate                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
