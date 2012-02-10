@@ -676,7 +676,13 @@ if filereadable($HOME."/.vimrc_secret_git")
     exec "source ".$HOME."/.vimrc_secret_git"
 endif
                                                                         " }}}2
-" | 09c. LustyJuggler / LustyExplorer |-----------------------------------{{{2
+" | 09c. Indent Guides                |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+                                                                        " }}}2
+" | 09d. LustyJuggler / LustyExplorer |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if !has('gui_running')
     let g:LustyExplorerSuppressRubyWarning = 1
