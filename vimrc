@@ -448,6 +448,9 @@ vnoremap <leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=lin
 vnoremap <C-j> dpV']
 vnoremap <C-k> dkPV']
 
+" Center selection within window (zz for visual selection):
+vnoremap zz <ESC>'<:<C-R>=(line("'>") - line("'<") + 1) / 2 + line("'<")<CR><CR>zzgv"'")'
+
                                                                         " }}}2
 " COMMAND mode -----------------------------------------------------------{{{2
 " Faster access to common directories:
