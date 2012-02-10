@@ -320,7 +320,7 @@ if has("gui_running")
     set guioptions-=r
     set guicursor=a:blinkon0 " Disable gui cursor blinking.
     "set guifont=Monaco:h12
-    set guifont=Menlo\ Regular\ for\ Powerline:h12
+    set guifont=Menlo\ Regular\ for\ Powerline:h14
     set cursorline
     hi cursorline guibg=#333333 
     hi CursorColumn guibg=#333333
@@ -654,7 +654,7 @@ endfunction
                                                                         " }}}2
 function! PresentationSettings() " ---------------------------------------{{{2
     "exec 'set guifont=Monaco:h22'
-    exec 'set guifont=Menlo Regular for Powerline:h22'
+    exec 'set guifont=Menlo Regular for Powerline:h24'
 endfunction
                                                                         " }}}2
 
@@ -681,6 +681,9 @@ endif
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesOdd  guibg=#272727 | endif
+au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesEven guibg=#323232 | endif
                                                                         " }}}2
 " | 09d. LustyJuggler / LustyExplorer |-----------------------------------{{{2
 "  \_________________________________________________________________________|
