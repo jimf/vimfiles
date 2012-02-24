@@ -49,20 +49,20 @@ filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 augroup MassageFiletype                                                 " {{{2
     " Make sure the correct filetype is applied to these files:
     autocmd!
-    autocmd BufRead *.ctp set filetype=php
-    autocmd BufRead *.erb set filetype=ruby
-    autocmd BufRead *.htm set filetype=php
-    autocmd BufRead *.html set filetype=php
-    autocmd BufRead *.mako set filetype=mako
-    autocmd BufRead *.t set filetype=perl
-    autocmd BufRead *.thtml set filetype=php
-    autocmd BufRead * if match(expand("%:p:h"), 'config/cron') > 0 | set ft=crontab | endif
-    autocmd BufRead psql.edit.* set filetype=psql
-    autocmd BufRead *.pp set filetype=ruby
-    autocmd BufRead *.txt set filetype=txt
-    autocmd BufRead *.zsh set filetype=zsh
-    autocmd BufRead *.zsh-theme set filetype=zsh
-    autocmd BufRead Vagrantfile set filetype=ruby
+    autocmd BufRead *.ctp setlocal filetype=php
+    autocmd BufRead *.erb setlocal filetype=ruby
+    autocmd BufRead *.htm setlocal filetype=php
+    autocmd BufRead *.html setlocal filetype=php
+    autocmd BufRead *.mako setlocal filetype=mako
+    autocmd BufRead *.t setlocal filetype=perl
+    autocmd BufRead *.thtml setlocal filetype=php
+    autocmd BufRead * if match(expand("%:p:h"), 'config/cron') > 0 | setlocal ft=crontab | endif
+    autocmd BufRead psql.edit.* setlocal filetype=psql
+    autocmd BufRead *.pp setlocal filetype=ruby
+    autocmd BufRead *.txt setlocal filetype=txt
+    autocmd BufRead *.zsh setlocal filetype=zsh
+    autocmd BufRead *.zsh-theme setlocal filetype=zsh
+    autocmd BufRead Vagrantfile setlocal filetype=ruby
 augroup END
                                                                         " }}}2
 augroup CoffeescriptEvents                                              " {{{2
@@ -91,13 +91,14 @@ augroup PerlEvents                                                      " {{{2
     autocmd!
     autocmd FileType perl setlocal makeprg=perl\ -c\ %
     autocmd FileType perl setlocal errorformat=%f:%l:%m
-    autocmd FileType perl iab echo print
+    autocmd FileType perl iab <buffer> echo print
     autocmd FileType perl set path+=~/svn/trunk/code/awlib/AW,/etc/perl,/usr/local/lib/perl/5.8.8,/usr/local/share/perl/5.8.8,/usr/lib/perl5,/usr/share/perl5,/usr/lib/perl/5.8,/usr/share/perl/5.8
-    autocmd FileType perl nmap <leader>m :vimgrep /^\s*sub / %<CR>:cw<CR>zO
+    autocmd FileType perl nmap <buffer> <leader>m :vimgrep /^\s*sub / %<CR>:cw<CR>zO
 augroup END
                                                                         " }}}2
 augroup PhpEvents                                                       " {{{2
     autocmd!
+    autocmd FileType php setlocal ai
     autocmd FileType php match Error /}\zs \/\/ \?close.*$/
     autocmd FileType php setlocal isk-=-
     autocmd FileType php setlocal makeprg=php\ -l\ %
@@ -105,26 +106,26 @@ augroup PhpEvents                                                       " {{{2
     autocmd FileType php setlocal keywordprg=~/bin/php_doc
 
     " List methods within file:
-    autocmd FileType php nnoremap <leader>m :vimgrep /^\s*\(private \\|public \)\?function / %<CR>:cw<CR>zO
+    autocmd FileType php nnoremap <buffer> <leader>m :vimgrep /^\s*\(private \\|public \)\?function / %<CR>:cw<CR>zO
 augroup END
                                                                         " }}}2
 augroup PythonEvents                                                    " {{{2
     autocmd!
-    autocmd FileType python set textwidth=72
+    autocmd FileType python setlocal textwidth=72
     "if filereadable('./bin/pylint') && filereadable('./pylintrc')
     autocmd FileType python setlocal makeprg=./bin/pylint\ --rcfile=./pylintrc\ --reports=n\ --output-format=parseable\ %:p
     autocmd FileType python setlocal efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
     "autocmd FileType python setlocal makeprg=(echo\ '[%:p]';\ rpylint\ --include-pep\ %:p)
     "autocmd FileType python setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
     autocmd FileType python setlocal keywordprg=pydoc
-    autocmd FileType python set isk-=:
+    autocmd FileType python setlocal isk-=:
     autocmd FileType python let python_highlight_all = 1
-    autocmd FileType python nmap <leader>m :vimgrep /^\s*def / %<CR>:cw<CR>zO
-    autocmd FileType python set suffixes+=.pyc,.pyo
+    autocmd FileType python nmap <buffer> <leader>m :vimgrep /^\s*def / %<CR>:cw<CR>zO
+    autocmd FileType python setlocal suffixes+=.pyc,.pyo
     au BufEnter * if &filetype == "python" | match ErrorMsg '\%>79v.\+' | endif
     au BufLeave * match
-    au BufEnter * if &filetype == "python" && v:version >= 703 | set colorcolumn=80 | endif
-    au BufLeave * if v:version >= 703 | set colorcolumn=0 | endif
+    au BufEnter * if &filetype == "python" && v:version >= 703 | setlocal colorcolumn=80 | endif
+    au BufLeave * if v:version >= 703 | setlocal colorcolumn=0 | endif
     au BufWritePost * if &filetype == "python" | call RunAllTests('unit-test') | endif
 augroup END
                                                                         " }}}2
@@ -159,13 +160,13 @@ if filereadable($HOME."/.vim/complete")
     set complete+=k$HOME/.vim/complete
 endif
 if version >= 700
-   autocmd FileType python set omnifunc=pythoncomplete#Complete
-   autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-   autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-   autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-   autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-   autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-   autocmd FileType c set omnifunc=ccomplete#Complete
+   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+   autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+   autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+   autocmd FileType c setlocal omnifunc=ccomplete#Complete
 endif
                                                                         " }}}2
 augroup NewFileTemplates                                                " {{{2
