@@ -727,6 +727,7 @@ nmap  <leader>"  cs'"
                                                                         " }}}2
 " | 09f. Syntastic                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
+" Be sure to pip install flake8
 if has("gui_running")
     let g:syntastic_mode_map = { 'mode': 'active',
                                \ 'active_filetypes': ['javascript', 'python'],
