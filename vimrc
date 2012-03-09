@@ -658,7 +658,7 @@ endfunction
                                                                         " }}}2
 function! PresentationSettings() " ---------------------------------------{{{2
     "exec 'set guifont=Monaco:h22'
-    exec 'set guifont=Menlo Regular for Powerline:h24'
+    set guifont=Menlo\ Regular\ for\ Powerline:h24
 endfunction
                                                                         " }}}2
 
