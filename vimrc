@@ -705,6 +705,12 @@ endif
 "  \_________________________________________________________________________|
 let g:Powerline_symbols = 'fancy'
                                                                         " }}}2
+" | 09d. RedGreen                     |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+hi GreenBar term=reverse ctermfg=white ctermbg=green guifg=white guibg=green4
+hi RedBar   term=reverse ctermfg=white ctermbg=red   guifg=white guibg=red3
+
+                                                                        " }}}2
 " | 09d. SnipMate                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
