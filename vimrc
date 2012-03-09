@@ -442,6 +442,10 @@ inoremap <C-S-CR> <ESC>A;<CR>
 vnoremap * y/\V<C-R>=substitute(escape(@@,"/\\"),"\n","\\\\n","ge")<CR><CR>
 vnoremap # y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>
 
+" Smoother visual indent/dedent:
+vnoremap > >gv
+vnoremap < <gv
+
 " SVN blame a block of text:
 vnoremap <leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 
