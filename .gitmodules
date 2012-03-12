@@ -103,3 +103,6 @@
 [submodule "bundle/indent-guides"]
 	path = bundle/indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "bundle/BufOnly"]
+	path = bundle/BufOnly
+	url = https://github.com/vim-scripts/BufOnly.vim.git
