@@ -748,7 +748,7 @@ endif
 "  \_________________________________________________________________________|
 " Columnate arrays/lists.
 vnoremap <silent> <leader>= :Tab /=<CR>
-vnoremap <silent> <leader>: :Tab /:\zs/l0l0<CR>
+vnoremap <silent> <leader>: :Tab /^[^:]*\zs:\zs/l0l0<CR>
 
 
                                                                         " }}}2
