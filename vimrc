@@ -126,7 +126,7 @@ augroup PythonEvents                                                    " {{{2
     au BufLeave * match
     au BufEnter * if &filetype == "python" && v:version >= 703 | setlocal colorcolumn=80 | endif
     au BufLeave * if v:version >= 703 | setlocal colorcolumn=0 | endif
-    au BufWritePost * if &filetype == "python" | call RunAllTests('unit-test') | endif
+    au BufWritePost * if &filetype == "python" | call RunAllTests('test') | endif
 augroup END
                                                                         " }}}2
 augroup RubyEvents                                                      " {{{2
@@ -646,8 +646,9 @@ endfunction
 function! RunAllTests(args) " --------------------------------------------{{{2
     if filereadable('./Makefile')
         silent ! echo
-        exec "set makeprg=make\\ NOSE='bin/nosetests\\ --no-color\\ --machine-out'"
-        set errorformat=%f:%l:\ fail:\ %m
+        "exec "set makeprg=make\\ NOSE='bin/nosetests\\ --no-color\\ --machine-out'"
+        exec "set makeprg=env/bin/python\\ setup.py\\ -q\\ nosetests\\ --with-machineout\\ --no-color"
+        set errorformat=%f:%l:\ %m
         exec "AsyncMakeGreen " . a:args
     endif
 endfunction
@@ -665,6 +666,11 @@ endfunction
                                                                         " }}}1
 " | 09. Plugins ................. Plugin-specific settings ---------------{{{1
 " |                                                                          |
+" | 09a. AsyncMakeGreen               |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:async_make_green_use_make_output_on_success = 1
+
+                                                                        " }}}2
 " | 09a. CommandT                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 map ,t :CommandT<CR>
@@ -735,6 +741,7 @@ if has("gui_running")
     let g:syntastic_enable_signs=1
     let g:syntastic_auto_jump=1
     let g:syntastic_auto_loc_list=1
+    let g:syntastic_javascript_jshint_conf = $HOME . "/.jshintrc"
 else
     let g:syntastic_enable_signs=0
 endif
