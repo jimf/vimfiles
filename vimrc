@@ -230,7 +230,7 @@ else
 endif
 
 " Ignore these patterns during completion.
-set wildignore=*.pyc,*.egg-info/*
+set wildignore=*.pyc,*.egg-info/*,*.egg/*
 
 function! GetProjectName()
     let location=expand('%:p')
