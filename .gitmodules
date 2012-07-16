@@ -112,3 +112,6 @@
 [submodule "bundle/command-t"]
 	path = bundle/command-t
 	url = https://github.com/wincent/Command-T.git
+[submodule "bundle/vim-handlebars"]
+	path = bundle/vim-handlebars
+	url = https://github.com/nono/vim-handlebars.git
