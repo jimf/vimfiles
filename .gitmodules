@@ -109,9 +109,6 @@
 [submodule "bundle/json"]
 	path = bundle/json
 	url = https://github.com/vim-scripts/vim-json-bundle.git
-[submodule "bundle/command-t"]
-	path = bundle/command-t
-	url = https://github.com/wincent/Command-T.git
 [submodule "bundle/vim-handlebars"]
 	path = bundle/vim-handlebars
 	url = https://github.com/nono/vim-handlebars.git
