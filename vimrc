@@ -70,6 +70,13 @@ augroup CoffeescriptEvents                                              " {{{2
     autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
     autocmd FileType coffee setlocal softtabstop=2
     autocmd FileType coffee setlocal shiftwidth=2
+    autocmd FileType coffee setlocal isk-=:
+augroup END
+                                                                        " }}}2
+augroup Handlebars                                                      " {{{2
+    autocmd!
+    au FileType handlebars setlocal softtabstop=2
+    au FileType handlebars setlocal shiftwidth=2
 augroup END
                                                                         " }}}2
 augroup HelpEvents                                                      " {{{2
@@ -127,6 +134,7 @@ augroup PythonEvents                                                    " {{{2
     au BufEnter * if &filetype == "python" && v:version >= 703 | setlocal colorcolumn=80 | endif
     au BufLeave * if v:version >= 703 | setlocal colorcolumn=0 | endif
     au BufWritePost * if &filetype == "python" | call RunAllTests('test') | endif
+    "au BufWritePost * if &filetype == "python" | call RunAllTests('unit-test') | endif
 augroup END
                                                                         " }}}2
 augroup RubyEvents                                                      " {{{2
@@ -139,6 +147,7 @@ augroup SassyEvents                                                     " {{{2
     autocmd!
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal shiftwidth=2
+    autocmd FileType scss setlocal isk-=:
 augroup END
                                                                         " }}}2
 augroup SvnEvents                                                       " {{{2
@@ -319,6 +328,7 @@ if has("gui_running")
     set guioptions-=m
     set guioptions-=L
     set guioptions-=r
+    set showtabline=0  " Hide tab bar
     set guicursor=a:blinkon0 " Disable gui cursor blinking.
     "set guifont=Monaco:h12
     set guifont=Menlo\ Regular\ for\ Powerline:h14
@@ -393,10 +403,6 @@ nnoremap <Esc>p p'[v']=
 
 " Toggle fold under cursor.
 nnoremap  <silent>  <space> :exe 'silent! normal! za'.(foldlevel('.')?'':'l')<cr>
-
-" Switch between buffers.
-nnoremap <right> <ESC>:bn<RETURN>
-nnoremap <left> <ESC>:bp<RETURN>
 
 " Add phpDoc-style comment to function:
 nnoremap <leader>* ?function<CR>f(yi(O/**<CR><CR><CR><Esc>p'[a <Esc>:s/\$/@/ge<CR>:s/,\s*/\r * /ge<CR>o/<Esc>v?\/\*\*<CR>=jA 
@@ -646,7 +652,7 @@ endfunction
 function! RunAllTests(args) " --------------------------------------------{{{2
     if filereadable('./Makefile')
         silent ! echo
-        "exec "set makeprg=make\\ NOSE='bin/nosetests\\ --no-color\\ --machine-out'"
+        "exec "set makeprg=make\\ NOSE='bin/nosetests\\ --no-color\\ --with-machineout'"
         exec "set makeprg=env/bin/python\\ setup.py\\ -q\\ nosetests\\ --with-machineout\\ --no-color"
         set errorformat=%f:%l:\ %m
         exec "AsyncMakeGreen " . a:args
@@ -668,14 +674,20 @@ endfunction
 " |                                                                          |
 " | 09a. AsyncMakeGreen               |-----------------------------------{{{2
 "  \_________________________________________________________________________|
-let g:async_make_green_use_make_output_on_success = 1
+let g:async_make_green_use_make_output_on_success = 0
 
                                                                         " }}}2
 " | 09a. CommandT                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
-map ,t :CommandT<CR>
-nnoremap ,b :CommandTBuffer<CR>
+"map ,t :CommandT<CR>
+"nnoremap ,b :CommandTBuffer<CR>
 
+"
+" | 09b. CtrlP                        |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:ctrlp_map = ',t'
+
+                                                                        " }}}2
                                                                         " }}}2
 " | 09b. delimitMate                  |-----------------------------------{{{2
 "  \_________________________________________________________________________|
