@@ -46,6 +46,12 @@ set tags+=tags;$HOME     " Look for tags in parent dirs
 "  \_________________________________________________________________________|
 filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 
+augroup WindowEvents                                                    " {{{2
+    autocmd!
+    autocmd WinEnter * set cursorline
+    autocmd WinLeave * set nocursorline
+augroup END
+                                                                        " }}}2
 augroup MassageFiletype                                                 " {{{2
     " Make sure the correct filetype is applied to these files:
     autocmd!
