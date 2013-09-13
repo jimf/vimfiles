@@ -786,10 +786,30 @@ vnoremap <silent> <leader>: :Tab /^[^:]*\zs:\zs/l0l0<CR>
 "  \_________________________________________________________________________|
 nnoremap TT :TagbarToggle<CR>
 
+" From https://github.com/lukaszkorecki/CoffeeTags
+if executable('coffeetags')
+  let g:tagbar_type_coffee = {
+        \ 'ctagsbin' : 'coffeetags',
+        \ 'ctagsargs' : '',
+        \ 'kinds' : [
+        \ 'f:functions',
+        \ 'o:object',
+        \ ],
+        \ 'sro' : ".",
+        \ 'kind2scope' : {
+        \ 'f' : 'object',
+        \ 'o' : 'object',
+        \ }
+        \ }
+endif
+
                                                                         " }}}2
 " | 09i. Zen-Coding                   |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:user_zen_settings = {'indentation': '  '}
+let g:ctrlp_custom_ignore = {
+  \ 'dir': 'node_modules'
+  \ }
 
                                                                         " }}}2
 
