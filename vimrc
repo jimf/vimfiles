@@ -59,6 +59,7 @@ augroup MassageFiletype                                                 " {{{2
     autocmd BufRead *.erb setlocal filetype=ruby
     autocmd BufRead *.htm setlocal filetype=php
     autocmd BufRead *.html setlocal filetype=php
+    autocmd BufRead *.less setlocal filetype=less.css
     autocmd BufRead *.mako setlocal filetype=mako
     autocmd BufRead *.t setlocal filetype=perl
     autocmd BufRead *.thtml setlocal filetype=php
@@ -77,6 +78,13 @@ augroup CoffeescriptEvents                                              " {{{2
     autocmd FileType coffee setlocal softtabstop=2
     autocmd FileType coffee setlocal shiftwidth=2
     autocmd FileType coffee setlocal isk-=:
+augroup END
+
+augroup LessEvents                                                      " {{{2
+    autocmd!
+    autocmd FileType less.css setlocal softtabstop=2
+    autocmd FileType less.css setlocal shiftwidth=2
+    autocmd FileType less.css setlocal isk-=:
 augroup END
                                                                         " }}}2
 augroup Handlebars                                                      " {{{2
@@ -238,6 +246,7 @@ set splitbelow           " Open new horizontal splits below the current.
 set splitright           " Open new vertical splits to the right.
 set cmdheight=2          " Commandline spans 2 rows.
 set laststatus=2         " Last window always has a statusline.
+set wildmode=longest,list
 if exists("*fugitive#statusline")
     set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%{fugitive#statusline()}%=%-14.(%l,%c/%L%V%)\ %P
 else
