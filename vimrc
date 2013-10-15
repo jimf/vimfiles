@@ -57,6 +57,7 @@ augroup MassageFiletype                                                 " {{{2
     autocmd!
     autocmd BufRead *.ctp setlocal filetype=php
     autocmd BufRead *.erb setlocal filetype=ruby
+    autocmd BufRead *.hbs setlocal filetype=handlebars
     autocmd BufRead *.htm setlocal filetype=php
     autocmd BufRead *.html setlocal filetype=php
     autocmd BufRead *.less setlocal filetype=less.css
@@ -74,7 +75,7 @@ augroup END
                                                                         " }}}2
 augroup CoffeescriptEvents                                              " {{{2
     autocmd!
-    autocmd BufWritePost *.coffee silent CoffeeMake! -b | cwindow
+    autocmd BufWritePost *.coffee silent make! -b | cwindow
     autocmd FileType coffee setlocal softtabstop=2
     autocmd FileType coffee setlocal shiftwidth=2
     autocmd FileType coffee setlocal isk-=:
