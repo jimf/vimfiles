@@ -48,6 +48,7 @@ filetype plugin indent on " filetype detection[ON] plugin[ON] indent[ON]
 
 augroup WindowEvents                                                    " {{{2
     autocmd!
+    autocmd BufWritePre * call EnsureDirExists(expand("%:h"))
     autocmd WinEnter * set cursorline
     autocmd WinLeave * set nocursorline
 augroup END
@@ -109,6 +110,13 @@ augroup MakefileEvents                                                  " {{{2
     autocmd FileType make setlocal noet sw=8
 augroup END
                                                                         " }}}2
+augroup LessEvents                                                      " {{{2
+    autocmd!
+    autocmd FileType less setlocal softtabstop=2
+    autocmd FileType less setlocal shiftwidth=2
+    autocmd FileType less setlocal isk-=:
+augroup END
+                                                                        " }}}2
 augroup PerlEvents                                                      " {{{2
     autocmd!
     autocmd FileType perl setlocal makeprg=perl\ -c\ %
@@ -148,7 +156,7 @@ augroup PythonEvents                                                    " {{{2
     au BufLeave * match
     au BufEnter * if &filetype == "python" && v:version >= 703 | setlocal colorcolumn=80 | endif
     au BufLeave * if v:version >= 703 | setlocal colorcolumn=0 | endif
-    au BufWritePost * if &filetype == "python" | call RunAllTests('test') | endif
+    " au BufWritePost * if &filetype == "python" | call RunAllTests('test') | endif
     "au BufWritePost * if &filetype == "python" | call RunAllTests('unit-test') | endif
 augroup END
                                                                         " }}}2
@@ -682,6 +690,16 @@ endfunction
 function! PresentationSettings() " ---------------------------------------{{{2
     "exec 'set guifont=Monaco:h22'
     set guifont=Menlo\ Regular\ for\ Powerline:h24
+endfunction
+                                                                        " }}}2
+function! EnsureDirExists(dir) " -----------------------------------------{{{2
+    if a:dir != "."
+        if !isdirectory(a:dir)
+            if exists("*mkdir")
+                call mkdir(a:dir, "p")
+            endif
+        endif
+    endif
 endfunction
                                                                         " }}}2
 
