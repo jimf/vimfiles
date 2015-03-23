@@ -76,7 +76,7 @@ augroup END
                                                                         " }}}2
 augroup CoffeescriptEvents                                              " {{{2
     autocmd!
-    autocmd BufWritePost *.coffee silent make! -b | cwindow
+    " autocmd BufWritePost *.coffee silent make! -b | cwindow
     autocmd FileType coffee setlocal softtabstop=2
     autocmd FileType coffee setlocal shiftwidth=2
     autocmd FileType coffee setlocal isk-=:
@@ -263,7 +263,7 @@ else
 endif
 
 " Ignore these patterns during completion.
-set wildignore=*.pyc,*.egg-info/*,*.egg/*
+set wildignore=*.pyc,*.egg-info/*,*.egg/*,*/node_modules/*,*/build/*
 
 function! GetProjectName()
     let location=expand('%:p')
@@ -465,6 +465,10 @@ inoremap <c-space> <c-x><c-o>
 " Next-line shortcuts
 inoremap <S-CR> <ESC>o
 inoremap <C-S-CR> <ESC>A;<CR>
+
+" Emacs-style home/end
+inoremap <C-a> <C-o>0
+inoremap <C-e> <C-o>$
 
                                                                         " }}}2
 " VISUAL mode ------------------------------------------------------------{{{2
