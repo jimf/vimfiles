@@ -13,14 +13,6 @@
 "   07. Mappings ................ General mappings                           |
 "   08. Functions/Commands ...... General functions and commands             |
 "   09. Plugins                                                              |
-"     09a. CommandT                                                          |
-"     09b. LustyJuggler / LustyExplorer                                      |
-"     09c. SnipMate                                                          |
-"     09c. Surround                                                          |
-"     09e. Syntastic                                                         |
-"     09f. Tabular                                                           |
-"     09g. Tagbar                                                            |
-"     09h. Zen-Coding                                                        |
 "-------------------------------------------------------------------------}}}1
 
 " | 01. General ................. General Vim behavior -------------------{{{1
@@ -715,24 +707,24 @@ endfunction
 let g:async_make_green_use_make_output_on_success = 0
 
                                                                         " }}}2
-" | 09a. CommandT                     |-----------------------------------{{{2
+" | 09b. CommandT                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 "map ,t :CommandT<CR>
 "nnoremap ,b :CommandTBuffer<CR>
 
 "
-" | 09b. CtrlP                        |-----------------------------------{{{2
+" | 09c. CtrlP                        |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:ctrlp_map = ',t'
 
                                                                         " }}}2
                                                                         " }}}2
-" | 09b. delimitMate                  |-----------------------------------{{{2
+" | 09d. delimitMate                  |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:delimitMate_smart_quotes = 0
 
                                                                         " }}}2
-" | 09b. Gist                         |-----------------------------------{{{2
+" | 09e. Gist                         |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:gist_github_hostname = 'github.colo.lair'
 let g:gist_force_http = 1
@@ -741,7 +733,7 @@ if filereadable($HOME."/.vimrc_secret_git")
     exec "source ".$HOME."/.vimrc_secret_git"
 endif
                                                                         " }}}2
-" | 09c. Indent Guides                |-----------------------------------{{{2
+" | 09f. Indent Guides                |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -750,38 +742,43 @@ let g:indent_guides_auto_colors = 0
 au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesOdd  guibg=#272727 | endif
 au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesEven guibg=#323232 | endif
                                                                         " }}}2
-" | 09d. LustyJuggler / LustyExplorer |-----------------------------------{{{2
+" | 09g. LustyJuggler / LustyExplorer |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if !has('gui_running')
     let g:LustyExplorerSuppressRubyWarning = 1
     let g:LustyJugglerSuppressRubyWarning = 1
 endif
                                                                         " }}}2
-" | 09d. Powerline                    |-----------------------------------{{{2
+" | 09h. Powerline                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:Powerline_symbols = 'fancy'
                                                                         " }}}2
-" | 09d. RedGreen                     |-----------------------------------{{{2
+" | 09i. RedGreen                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 hi GreenBar term=reverse ctermfg=white ctermbg=green guifg=white guibg=green4
 hi RedBar   term=reverse ctermfg=white ctermbg=red   guifg=white guibg=red3
 
                                                                         " }}}2
-" | 09d. SnipMate                     |-----------------------------------{{{2
+" | 09j. SnipMate                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
     exec "source " . $HOME . "/.vim/snippets/support_functions.vim"
 endif
 
                                                                         " }}}2
-" | 09e. Surround                     |-----------------------------------{{{2
+" | 09k. Surround                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Switch between double/single quotes:
 nmap  <leader>'  cs"'
 nmap  <leader>"  cs'"
 
+
+" | 09l. Switch                       |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:switch_mapping = "<C-t>"
+
                                                                         " }}}2
-" | 09f. Syntastic                    |-----------------------------------{{{2
+" | 09m. Syntastic                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Be sure to pip install flake8
 if has("gui_running")
@@ -799,7 +796,7 @@ else
 endif
 
                                                                         " }}}2
-" | 09g. Tabular                      |-----------------------------------{{{2
+" | 09n. Tabular                      |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Columnate arrays/lists.
 vnoremap <silent> <leader>= :Tab /=<CR>
@@ -807,7 +804,7 @@ vnoremap <silent> <leader>: :Tab /^[^:]*\zs:\zs/l0l0<CR>
 
 
                                                                         " }}}2
-" | 09h. Tagbar                       |-----------------------------------{{{2
+" | 09o. Tagbar                       |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 nnoremap TT :TagbarToggle<CR>
 
@@ -829,7 +826,7 @@ if executable('coffeetags')
 endif
 
                                                                         " }}}2
-" | 09i. Zen-Coding                   |-----------------------------------{{{2
+" | 09p. Zen-Coding                   |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:user_zen_settings = {'indentation': '  '}
 let g:ctrlp_custom_ignore = {
