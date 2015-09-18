@@ -478,6 +478,9 @@ vnoremap <C-k> dkPV']
 " Center selection within window (zz for visual selection):
 vnoremap zz <ESC>'<:<C-R>=(line("'>") - line("'<") + 1) / 2 + line("'<")<CR><CR>zzgv"'")'
 
+" Increment column (from https://github.com/toranb/dotfiles/blob/daf05812bed08b9c6d367aeb0b6ccd12764765dd/vimrc#L288
+vnoremap <C-a> :call Incr()<CR>
+
                                                                         " }}}2
 " COMMAND mode -----------------------------------------------------------{{{2
 " Faster access to common directories:
@@ -696,6 +699,15 @@ function! EnsureDirExists(dir) " -----------------------------------------{{{2
             endif
         endif
     endif
+endfunction
+                                                                        " }}}2
+function! Incr() " -------------------------------------------------------{{{2
+    let a = line('.') - line("'<'")
+    let c = virtcol("'<'")
+    if a > 0
+        execute 'normal! '.c.'|'.a."\<C-a>"
+    endif
+    normal `<
 endfunction
                                                                         " }}}2
 
