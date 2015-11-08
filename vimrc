@@ -263,11 +263,7 @@ function! GetProjectName()
         let location = getcwd()
     endif
     let location = substitute(location, $HOME, "~", "g")
-    if match(location, '\~/svn/packages/') == 0
-        return substitute(substitute(location, '\~/svn/packages/', '', ''), '/.*', '', '')
-    elseif match(location, '\~/svn/projects/') == 0
-        return substitute(substitute(location, '\~/svn/projects/[^/]\{-}/', '', ''), '/.*', '', '')
-    elseif match(location, '\~/git/') == 0
+    if match(location, '\~/git/') == 0
         return substitute(substitute(location, '\~/git/', '', ''), '/.*', '', '')
     else
         return ''
@@ -349,9 +345,9 @@ if has("gui_running")
     "set guifont=Monaco:h12
     set guifont=Menlo\ Regular\ for\ Powerline:h14
     set cursorline
-    hi cursorline guibg=#333333 
+    hi cursorline guibg=#333333
     hi CursorColumn guibg=#333333
-    au GUIEnter * cd ~/svn/packages
+    au GUIEnter * cd ~/git
 endif
 
 " Restore last edited position (help last-position-jump).
@@ -441,9 +437,6 @@ nnoremap ,v V']
 " Run make on current file.
 nnoremap <silent> <F5> :make<CR>:cw<CR>
 
-" SVN Diff the given file.
-nnoremap <F6> :!/usr/bin/svn diff --diff-cmd /Applications/RoaringDiff.app/Contents/MacOS/RoaringDiff <C-r>%<CR>
-
                                                                         " }}}2
 " INSERT mode ------------------------------------------------------------{{{2
 inoremap <leader><tab>  <c-r>=MakeBlock()<cr>
@@ -468,9 +461,6 @@ inoremap <C-e> <C-o>$
 vnoremap * y/\V<C-R>=substitute(escape(@@,"/\\"),"\n","\\\\n","ge")<CR><CR>
 vnoremap # y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>
 
-" SVN blame a block of text:
-vnoremap <leader>b :<C-U>!svn blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-
 " Bubble text
 vnoremap <C-j> dpV']
 vnoremap <C-k> dkPV']
@@ -483,9 +473,6 @@ vnoremap <C-a> :call Incr()<CR>
 
                                                                         " }}}2
 " COMMAND mode -----------------------------------------------------------{{{2
-" Faster access to common directories:
-cnoremap <leader>a ~/svn/trunk/code/sites/aweber_app/
-cnoremap <leader>w ~/svn/trunk/code/sites/aweber_app/webroot/
 
                                                                         " }}}2
 
