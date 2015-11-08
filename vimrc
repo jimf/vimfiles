@@ -825,7 +825,14 @@ if executable('coffeetags')
 endif
 
                                                                         " }}}2
-" | 09p. Zen-Coding                   |-----------------------------------{{{2
+" | 09p. UltiSnips                    |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+                                                                        " }}}2
+" | 09q. Zen-Coding                   |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:user_zen_settings = {'indentation': '  '}
 let g:ctrlp_custom_ignore = {

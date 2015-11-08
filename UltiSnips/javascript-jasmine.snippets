@@ -1,0 +1,45 @@
+priority -50
+
+snippet ae "after each (js)" b
+afterEach(function() {
+	$0
+});
+endsnippet
+
+snippet be "before each (js)" b
+beforeEach(function() {
+	$0
+});
+endsnippet
+
+snippet desc "Describe (js)" b
+describe('${1}', function() {
+	$0
+});
+endsnippet
+
+snippet it "it (js)" b
+it('should ${1}', function() {
+	$0
+});
+endsnippet
+
+snippet jobc "object containing (js)" b
+jasmine.objectContaining($0)
+endsnippet
+
+snippet tb "to be (js)" b
+expect(${1}).toBe(${2});
+endsnippet
+
+snippet te "to equal (js)" b
+expect(${1}).toEqual(${2});
+endsnippet
+
+snippet thbc "to have been called (js)" b
+expect(${1}).toHaveBeenCalled();
+endsnippet
+
+snippet thbcw "to have been called with (js)" b
+expect(${1}).toHaveBeenCalledWith(${2});
+endsnippet
