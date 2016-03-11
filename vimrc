@@ -787,9 +787,11 @@ if has("gui_running")
     let g:syntastic_enable_signs=1
     let g:syntastic_auto_jump=1
     let g:syntastic_auto_loc_list=1
-    if filereadable($HOME."/.jshintrc")
-        let g:syntastic_javascript_jshint_conf = $HOME . "/.jshintrc"
-    endif
+    let g:syntastic_php_checkers=['php', 'phpcs']
+    let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+    " if filereadable($HOME."/.jshintrc")
+    "     let g:syntastic_javascript_jshint_conf = $HOME . "/.jshintrc"
+    " endif
 else
     let g:syntastic_enable_signs=0
 endif
