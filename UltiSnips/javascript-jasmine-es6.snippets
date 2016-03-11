@@ -1,25 +1,25 @@
 priority -50
 
 snippet ae "after each (js)" b
-afterEach(function() {
+afterEach(() => {
 	${1}
 });
 endsnippet
 
 snippet be "before each (js)" b
-beforeEach(function() {
+beforeEach(() => {
 	${1}
 });
 endsnippet
 
 snippet desc "Describe (js)" b
-describe('${1}', function() {
+describe('${1}', () => {
 	${2}
 });
 endsnippet
 
 snippet it "it (js)" b
-it('should ${1}', function() {
+it('should ${1}', () => {
 	${2}
 });
 endsnippet
