@@ -135,8 +135,8 @@ augroup PythonEvents                                                    " {{{2
     autocmd!
     autocmd FileType python setlocal textwidth=72
     "if filereadable('./bin/pylint') && filereadable('./pylintrc')
-    autocmd FileType python setlocal makeprg=./bin/pylint\ --rcfile=./pylintrc\ --reports=n\ --output-format=parseable\ %:p
-    autocmd FileType python setlocal efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
+    " autocmd FileType python setlocal makeprg=./bin/pylint\ --rcfile=./pylintrc\ --reports=n\ --output-format=parseable\ %:p
+    " autocmd FileType python setlocal efm=%A%f:%l:\ [%t%.%#]\ %m,%Z%p^^,%-C%.%#
     "autocmd FileType python setlocal makeprg=(echo\ '[%:p]';\ rpylint\ --include-pep\ %:p)
     "autocmd FileType python setlocal errorformat=%f:%l:%c:\ %m,%f:%l:\ %m
     autocmd FileType python setlocal keywordprg=pydoc
