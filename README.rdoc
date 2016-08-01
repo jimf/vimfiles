@@ -23,5 +23,5 @@ Example:
 
 After initial istallation, initialize submodules:
 
-  submodule init
-  submodule update
+  git submodule init
+  git submodule update
