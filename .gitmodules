@@ -4,9 +4,6 @@
 [submodule "bundle/argtextobj"]
 	path = bundle/argtextobj
 	url = https://github.com/vim-scripts/argtextobj.vim.git
-[submodule "snippets"]
-	path = snippets
-	url = git@github.com:jimf/snipmate-snippets.git
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = http://github.com/majutsushi/tagbar.git
