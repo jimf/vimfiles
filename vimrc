@@ -741,43 +741,48 @@ let g:indent_guides_auto_colors = 0
 au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesOdd  guibg=#272727 | endif
 au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesEven guibg=#323232 | endif
                                                                         " }}}2
-" | 09g. LustyJuggler / LustyExplorer |-----------------------------------{{{2
+" | 09g. JavaScript                   |-----------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:javascript_plugin_jsdoc = 1
+                                                                        " }}}2
+                                                                        " }}}2
+" | 09h. LustyJuggler / LustyExplorer |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if !has('gui_running')
     let g:LustyExplorerSuppressRubyWarning = 1
     let g:LustyJugglerSuppressRubyWarning = 1
 endif
                                                                         " }}}2
-" | 09h. Powerline                    |-----------------------------------{{{2
+" | 09i. Powerline                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:Powerline_symbols = 'fancy'
                                                                         " }}}2
-" | 09i. RedGreen                     |-----------------------------------{{{2
+" | 09j. RedGreen                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 hi GreenBar term=reverse ctermfg=white ctermbg=green guifg=white guibg=green4
 hi RedBar   term=reverse ctermfg=white ctermbg=red   guifg=white guibg=red3
 
                                                                         " }}}2
-" | 09j. SnipMate                     |-----------------------------------{{{2
+" | 09k. SnipMate                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
     exec "source " . $HOME . "/.vim/snippets/support_functions.vim"
 endif
 
                                                                         " }}}2
-" | 09k. Surround                     |-----------------------------------{{{2
+" | 09l. Surround                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Switch between double/single quotes:
 nmap  <leader>'  cs"'
 nmap  <leader>"  cs'"
 
 
-" | 09l. Switch                       |-----------------------------------{{{2
+" | 09m. Switch                       |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:switch_mapping = "<C-t>"
 
                                                                         " }}}2
-" | 09m. Syntastic                    |-----------------------------------{{{2
+" | 09n. Syntastic                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Be sure to pip install flake8
 if has("gui_running")
@@ -797,7 +802,7 @@ else
 endif
 
                                                                         " }}}2
-" | 09n. Tabular                      |-----------------------------------{{{2
+" | 09o. Tabular                      |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Columnate arrays/lists.
 vnoremap <silent> <leader>= :Tab /=<CR>
@@ -805,7 +810,7 @@ vnoremap <silent> <leader>: :Tab /^[^:]*\zs:\zs/l0l0<CR>
 
 
                                                                         " }}}2
-" | 09o. Tagbar                       |-----------------------------------{{{2
+" | 09p. Tagbar                       |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 nnoremap TT :TagbarToggle<CR>
 
@@ -827,14 +832,14 @@ if executable('coffeetags')
 endif
 
                                                                         " }}}2
-" | 09p. UltiSnips                    |-----------------------------------{{{2
+" | 09q. UltiSnips                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
                                                                         " }}}2
-" | 09q. Zen-Coding                   |-----------------------------------{{{2
+" | 09r. Zen-Coding                   |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:user_zen_settings = {'indentation': '  '}
 let g:ctrlp_custom_ignore = {
