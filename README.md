@@ -57,4 +57,6 @@ $ ./configure --with-features=huge \
               --enable-luainterp=yes \
               --enable-gui=gtk2 \
               --enable-cscope
+$ make
+$ sudo make install
 ```
