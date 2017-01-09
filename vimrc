@@ -697,6 +697,12 @@ function! Incr() " -------------------------------------------------------{{{2
     normal `<
 endfunction
                                                                         " }}}2
+function! Standard() " ---------------------------------------------------{{{2
+    let g:syntastic_javascript_checkers = ['standard']
+    call SetWidth(2)
+endfunction
+command! -nargs=0 Standard call Standard()
+                                                                        " }}}2
 
                                                                         " }}}1
 " | 09. Plugins ................. Plugin-specific settings ---------------{{{1
