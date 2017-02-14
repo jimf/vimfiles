@@ -216,14 +216,10 @@ syn keyword Todo contained TODO FIXME XXX NOTE
 hi link awError Error
 match awError /^[} \t]*\zs\(else\?\)\? \?if(/
 
-if has("gui_running")
-    if filereadable($HOME."/.vim/colors/xoria256.vim") || filereadable($VIMRUNTIME."/colors/xoria256.vim")
-        colorscheme xoria256
-    endif
-else
-    if filereadable($HOME."/.vim/colors/desert256.vim") || filereadable($VIMRUNTIME."/colors/desert256.vim")
-        colorscheme desert256
-    endif
+if filereadable($HOME."/.vim/colors/xoria256.vim") || filereadable($VIMRUNTIME."/colors/xoria256.vim")
+    colorscheme xoria256
+elseif filereadable($HOME."/.vim/colors/desert256.vim") || filereadable($VIMRUNTIME."/colors/desert256.vim")
+    colorscheme desert256
 endif
 
                                                                         " }}}1
@@ -247,11 +243,30 @@ set splitbelow           " Open new horizontal splits below the current.
 set splitright           " Open new vertical splits to the right.
 set cmdheight=2          " Commandline spans 2 rows.
 set laststatus=2         " Last window always has a statusline.
+set cursorline           " Highlight cursor line.
+hi cursorline cterm=NONE ctermbg=236 guibg=#333333
 set wildmode=longest,list
 if exists("*fugitive#statusline")
     set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%{fugitive#statusline()}%=%-14.(%l,%c/%L%V%)\ %P
 else
     set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%=%-14.(%l,%c/%L%V%)\ %P
+endif
+
+if exists('$TMUX')
+    " Disable background color erase (BCE) in tmux to fix bgcolor
+    set t_ut=
+endif
+
+if !has("gui_running")
+    if has("mac")
+        if exists('$TMUX')
+            let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+            let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+        else
+            let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+            let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+        endif
+    endif
 endif
 
 " Ignore these patterns during completion.
@@ -335,7 +350,6 @@ if has("multi_byte")
 endif
 
 if has("gui_running")
-    set lines=999 columns=160
     set guioptions-=T
     set guioptions-=m
     set guioptions-=L
@@ -344,8 +358,6 @@ if has("gui_running")
     set guicursor=a:blinkon0 " Disable gui cursor blinking.
     "set guifont=Monaco:h12
     set guifont=Menlo\ Regular\ for\ Powerline:h14
-    set cursorline
-    hi cursorline guibg=#333333
     hi CursorColumn guibg=#333333
     au GUIEnter * cd ~/git
 endif
@@ -754,10 +766,11 @@ let g:javascript_plugin_jsdoc = 1
                                                                         " }}}2
 " | 09h. LustyJuggler / LustyExplorer |-----------------------------------{{{2
 "  \_________________________________________________________________________|
-if !has('gui_running')
-    let g:LustyExplorerSuppressRubyWarning = 1
-    let g:LustyJugglerSuppressRubyWarning = 1
-endif
+" TODO: Determine why this was set
+" if !has('gui_running')
+"     let g:LustyExplorerSuppressRubyWarning = 1
+"     let g:LustyJugglerSuppressRubyWarning = 1
+" endif
                                                                         " }}}2
 " | 09i. Powerline                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
@@ -791,20 +804,17 @@ let g:switch_mapping = "<C-t>"
 " | 09n. Syntastic                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Be sure to pip install flake8
-if has("gui_running")
-    let g:syntastic_mode_map = { 'mode': 'active',
-                               \ 'active_filetypes': ['javascript', 'python'],
-                               \ 'passive_filetypes': [] }
-    let g:syntastic_enable_signs=1
-    let g:syntastic_auto_jump=1
-    let g:syntastic_auto_loc_list=1
-    let g:syntastic_php_checkers=['php', 'phpcs']
-    let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
-    " if filereadable($HOME."/.jshintrc")
-    "     let g:syntastic_javascript_jshint_conf = $HOME . "/.jshintrc"
-    " endif
-else
-    let g:syntastic_enable_signs=0
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['javascript', 'python'],
+                           \ 'passive_filetypes': [] }
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_php_checkers=['php', 'phpcs']
+let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+
+if !has("gui_running")
+    let g:syntastic_enable_highlighting=0
 endif
 
                                                                         " }}}2
