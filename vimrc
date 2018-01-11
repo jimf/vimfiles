@@ -413,10 +413,10 @@ nnoremap <C-d> :quit<CR>
 nnoremap <leader>w /[A-Z]<CR>
 
 " More easily navigate windows.
-nnoremap <C-j> <c-w>j
-nnoremap <C-k> <c-w>k
-nnoremap <C-l> <c-w>l
-nnoremap <C-h> <c-w>h
+" nnoremap <C-j> <c-w>j
+" nnoremap <C-k> <c-w>k
+" nnoremap <C-l> <c-w>l
+" nnoremap <C-h> <c-w>h
 
 " Turn on/off search highlighting.
 nnoremap <silent> <leader>h :se invhlsearch<CR>
