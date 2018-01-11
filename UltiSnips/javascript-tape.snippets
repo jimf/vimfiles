@@ -1,0 +1,16 @@
+priority -50
+
+snippet test "test()" b
+test('${1}', function (t) {
+	${2}
+	t.end()
+})
+endsnippet
+
+snippet eq "t.equal()" b
+t.equal(${1})
+endsnippet
+
+snippet de "t.deepEqual()" b
+t.deepEqual(${1})
+endsnippet
