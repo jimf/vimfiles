@@ -25,7 +25,7 @@ silent! call pathogen#helptags()
 
 set mouse=a              " Enable the mouse for all modes.
 set history=500          " Number of lines of history to remember.
-set isk+=_,$,@,%,#,:     " Make these characters count as part of a word.
+set isk+=_,$,@,%,#       " Make these characters count as part of a word.
 set isfname-=-           " Make these characters NOT count as part of filename
 set viminfo+=!           " Make sure we can save viminfo.
 set autoread             " Automatically re-read file when externally modified
@@ -243,6 +243,7 @@ set splitbelow           " Open new horizontal splits below the current.
 set splitright           " Open new vertical splits to the right.
 set cmdheight=2          " Commandline spans 2 rows.
 set laststatus=2         " Last window always has a statusline.
+set lazyredraw           " Faster cursor scrolling.
 set cursorline           " Highlight cursor line.
 hi cursorline cterm=NONE ctermbg=236 guibg=#333333
 set wildmode=longest,list
@@ -270,7 +271,7 @@ if !has("gui_running")
 endif
 
 " Ignore these patterns during completion.
-set wildignore=*.pyc,*.egg-info/*,*.egg/*,*/node_modules/*,*/build/*
+set wildignore=*.pyc,*.egg-info/*,*.egg/*,*/node_modules/*,*/build/*,package-lock.json
 
 function! GetProjectName()
     let location=expand('%:p')
@@ -328,7 +329,7 @@ if version >= 600
     set foldlevel=100
     set fmr={,} 
     set foldmethod=marker
-    set foldminlines=4
+    " set foldminlines=4
 endif
 "set foldopen-=search     " Don't open folds when you search into them.
 "set foldopen-=undo       " Don't open folds when you undo stuff.
@@ -472,6 +473,11 @@ inoremap <C-e> <C-o>$
 " Visual searching:
 vnoremap * y/\V<C-R>=substitute(escape(@@,"/\\"),"\n","\\\\n","ge")<CR><CR>
 vnoremap # y?\V<C-R>=substitute(escape(@@,"?\\"),"\n","\\\\n","ge")<CR><CR>
+
+" Color conversion
+vnoremap <leader>r c<C-R>=color_convert#hex2rgb('<C-R>"')<CR><ESC>
+vnoremap <leader>h c<C-R>=color_convert#rgb2hex('<C-R>"')<CR><ESC>
+" #ffffff
 
 " Bubble text
 vnoremap <C-j> dpV']
@@ -766,11 +772,8 @@ let g:javascript_plugin_jsdoc = 1
                                                                         " }}}2
 " | 09h. LustyJuggler / LustyExplorer |-----------------------------------{{{2
 "  \_________________________________________________________________________|
-" TODO: Determine why this was set
-" if !has('gui_running')
-"     let g:LustyExplorerSuppressRubyWarning = 1
-"     let g:LustyJugglerSuppressRubyWarning = 1
-" endif
+" High Sierra altered ruby version, breaking this plugin.
+let g:LustyExplorerSuppressRubyWarning = 1
                                                                         " }}}2
 " | 09i. Powerline                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
