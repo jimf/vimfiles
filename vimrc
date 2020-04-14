@@ -162,6 +162,7 @@ augroup SassyEvents                                                     " {{{2
     autocmd!
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal shiftwidth=2
+    autocmd FileType scss setlocal isk+=-
     autocmd FileType scss setlocal isk-=:
 augroup END
                                                                         " }}}2
