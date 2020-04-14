@@ -246,7 +246,9 @@ set cmdheight=2          " Commandline spans 2 rows.
 set laststatus=2         " Last window always has a statusline.
 set lazyredraw           " Faster cursor scrolling.
 set cursorline           " Highlight cursor line.
-hi cursorline cterm=NONE ctermbg=236 guibg=#333333
+hi CursorLine term=NONE cterm=NONE ctermbg=236 guifg=NONE guibg=#333333
+hi CursorLineNr term=bold cterm=NONE ctermfg=11 gui=bold guifg=Yellow
+
 set wildmode=longest,list
 if exists("*fugitive#statusline")
     set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%{fugitive#statusline()}%=%-14.(%l,%c/%L%V%)\ %P
