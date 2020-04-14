@@ -70,9 +70,6 @@
 [submodule "bundle/swap-parameters"]
 	path = bundle/swap-parameters
 	url = https://github.com/vim-scripts/swap-parameters.git
-[submodule "bundle/gist"]
-	path = bundle/gist
-	url = git@github.com:jimf/gist-vim.git
 [submodule "bundle/AsyncCommand"]
 	path = bundle/AsyncCommand
 	url = https://github.com/pydave/AsyncCommand.git
