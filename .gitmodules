@@ -112,9 +112,6 @@
 [submodule "bundle/vim-tmux-navigator"]
 	path = bundle/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "bundle/vim-reason-legacy"]
-	path = bundle/vim-reason-legacy
-	url = https://github.com/reasonml-editor/vim-reason-legacy
 [submodule "bundle/rust.vim"]
 	path = bundle/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
