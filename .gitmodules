@@ -61,9 +61,6 @@
 [submodule "bundle/pep8-text-width"]
 	path = bundle/pep8-text-width
 	url = git@github.com:jimf/vim-pep8-text-width.git
-[submodule "bundle/red-green"]
-	path = bundle/red-green
-	url = git@github.com:jimf/vim-red-green.git
 [submodule "bundle/indent-guides"]
 	path = bundle/indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
