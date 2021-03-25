@@ -64,9 +64,6 @@
 [submodule "bundle/pep8-text-width"]
 	path = bundle/pep8-text-width
 	url = git@github.com:jimf/vim-pep8-text-width.git
-[submodule "bundle/AsyncCommand"]
-	path = bundle/AsyncCommand
-	url = https://github.com/pydave/AsyncCommand.git
 [submodule "bundle/async-make-green"]
 	path = bundle/async-make-green
 	url = git@github.com:jimf/vim-async-make-green.git
