@@ -127,3 +127,6 @@
 [submodule "pack/bundle/start/vim-projectionist"]
 	path = pack/bundle/start/vim-projectionist
 	url = https://github.com/tpope/vim-projectionist.git
+[submodule "pack/bundle/start/vim-dispatch"]
+	path = pack/bundle/start/vim-dispatch
+	url = https://github.com/tpope/vim-dispatch.git
