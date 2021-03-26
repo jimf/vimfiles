@@ -18,11 +18,6 @@
 " | 01. General ................. General Vim behavior -------------------{{{1
 "  \_________________________________________________________________________|
 set nocompatible         " Get rid of Vi compatibility mode. SET FIRST!
-
-" Update runtime path to include ~/.vim/bundle directory
-silent! call pathogen#infect()
-silent! call pathogen#helptags()
-
 set mouse=a              " Enable the mouse for all modes.
 set history=500          " Number of lines of history to remember.
 set isk+=_,$,@,%,#       " Make these characters count as part of a word.
