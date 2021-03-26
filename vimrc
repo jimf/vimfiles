@@ -102,13 +102,6 @@ augroup MakefileEvents                                                  " {{{2
     autocmd FileType make setlocal noet sw=8
 augroup END
                                                                         " }}}2
-augroup LessEvents                                                      " {{{2
-    autocmd!
-    autocmd FileType less setlocal softtabstop=2
-    autocmd FileType less setlocal shiftwidth=2
-    autocmd FileType less setlocal isk-=:
-augroup END
-                                                                        " }}}2
 augroup PerlEvents                                                      " {{{2
     autocmd!
     autocmd FileType perl setlocal makeprg=perl\ -c\ %
@@ -158,7 +151,7 @@ augroup RubyEvents                                                      " {{{2
     autocmd FileType ruby setlocal shiftwidth=2
 augroup END
                                                                         " }}}2
-augroup SassyEvents                                                     " {{{2
+augroup SassEvents                                                      " {{{2
     autocmd!
     autocmd FileType scss setlocal softtabstop=2
     autocmd FileType scss setlocal shiftwidth=2
@@ -194,17 +187,6 @@ if version >= 700
    autocmd FileType c setlocal omnifunc=ccomplete#Complete
 endif
                                                                         " }}}2
-augroup NewFileTemplates                                                " {{{2
-    autocmd!
-    au BufNewFile *.pm      :call LoadTemplate('Moose')
-    au BufNewFile *.pl      :call LoadTemplate('Perl')
-    au BufNewFile *.t       :call LoadTemplate('PerlTest')
-    au BufNewFile *.php     :call LoadTemplate('PHP')
-    au BufNewFile setup.py  :call LoadTemplate('Setup')
-    au BufNewFile *_test.py :call LoadTemplate('PythonTest')
-    au BufNewFile test_*.py :call LoadTemplate('PythonTest')
-    au BufNewFile *.py      :call LoadTemplate('Python')
-augroup END                                                             " }}}2
 
 
                                                                         " }}}1
@@ -444,9 +426,6 @@ nnoremap <leader>- ciw<C-R>=SwitchStyle("<C-R>"")<CR><ESC>
 " Faster :e
 nnoremap ,e :e <C-R>=Look()<CR><C-D>
 
-" Call RunAllTests
-nnoremap <leader>a :call RunAllTests('')<cr>:redraw<cr>:call JumpToError()<cr>
-
 " Re-select paste
 nnoremap ,v V']
 
@@ -500,12 +479,6 @@ vnoremap <C-a> :call Incr()<CR>
                                                                         " }}}1
 " | 08. Functions/Commands ...... General functions and commands ---------{{{1
 "  \_________________________________________________________________________|
-function! CdToProjectBase() " --------------------------------------------{{{2
-   let _dir = strpart(expand("%:p:h"), 0, matchend(expand("%:p:h"), "_app"))
-   exec "cd " . _dir
-   unlet _dir
-endfunction
-                                                                        " }}}2
 function! Look() " -------------------------------------------------------{{{2
     let working = expand('%:h')
     if working == ''
@@ -558,11 +531,6 @@ function! InsertTabWrapper() " -------------------------------------------{{{2
 endfunction
 "inoremap <tab> <c-r>=InsertTabWrapper()<cr>
                                                                         " }}}2
-function! DimLogging() " -------------------------------------------------{{{2
-    exec "hi DimmedLogging ctermfg=darkgray guibg=#333333"
-    exec "match DimmedLogging /^\s*$self->log.*$/"
-endfunction
-                                                                        " }}}2
 function! SetWidth(width) " ----------------------------------------------{{{2
     execute "set tabstop=" . a:width
     execute "set softtabstop=" . a:width
@@ -570,134 +538,6 @@ function! SetWidth(width) " ----------------------------------------------{{{2
     echo "Indentation width set to " . a:width
 endfunction
 command! -nargs=1 SetWidth call SetWidth(<q-args>)
-                                                                        " }}}2
-function! OpenTests(pbase, tbase, tglob) " -------------------------------{{{2
-    " TODO: use finddir with a contat'ed let/expand to recursively search for
-    " the tests/ directory
-    let testdir = substitute(expand("%:p:r"), a:pbase, a:tbase, "")
-    if isdirectory(testdir)
-        let testfiles = split(glob(testdir . "/" . a:tglob), "\0")
-        if len(testfiles) == 0
-            echo "No tests found in test directory"
-        elseif len(testfiles) == 1
-            execute "e " . testfiles[0]
-        else
-            execute "e " . testdir
-        endif
-    elseif filereadable(testdir . substitute(a:tglob, "*", "", ""))
-        execute "e " . testdir . substitute(a:tglob, "*", "", "")
-    else
-        echo "Could not find test file(s) or directory"
-    endif
-endfunction
-au FileType perl command! -nargs=0 Tests call OpenTests("awlib", "awlib/tests", "*.t")
-au FileType python command! -nargs=0 Tests call OpenTests("Python", "Python/tests", "_test.py")
-                                                                        " }}}2
-function! OpenPackageTests() " -------------------------------------------{{{2
-    let testdir = finddir("tests", expand("%:h").";")
-    if strlen(testdir) > 0
-        execute "e " . testdir
-    else
-        echo "Test directory not found"
-    endif
-endfunction
-                                                                        " }}}2
-function! LoadTemplate(template_name) " ----------------------------------{{{2
-    if !exists("g:templates_loaded")
-        let g:templates_loaded = {}
-    endif
-
-    let curfile = expand("%:p")
-    if !has_key(g:templates_loaded, curfile)
-        let g:templates_loaded[curfile] = 1
-        let template_path = $HOME.'/Templates/'.a:template_name
-        if filereadable(template_path)
-            execute ":r " . template_path . " | normal -1dd"
-        endif
-    endif
-endfunction
-                                                                        " }}}2
-function! Pkg(name) " ----------------------------------------------------{{{2
-    let target = substitute(system("$HOME/bin/pkg " . shellescape(a:name)), '\n', '', '')
-    if isdirectory(target)
-        execute "cd " . target
-    else
-        echo "Project not found"
-    endif
-endfunction
-command! -nargs=1 Pkg call Pkg(<q-args>)
-                                                                        " }}}2
-function! RunTests(target, args) " ---------------------------------------{{{2
-    silent ! echo
-    exec 'silent ! echo -e "\033[1;36mRunning tests in ' . a:target . '\033[0m"'
-    silent w
-    exec "make " . a:target . " " . a:args
-endfunction
-                                                                        " }}}2
-function! ClassToFilename(class_name) " ----------------------------------{{{2
-    let understored_class_name = substitute(a:class_name, '\(.\)\(\u\)', '\1_\U\2', 'g')
-    let file_name = substitute(understored_class_name, '\(\u\)', '\L\1', 'g')
-    return file_name
-endfunction
-                                                                        " }}}2
-function! ModuleTestPath() " ---------------------------------------------{{{2
-    let file_path = @%
-    let components = split(file_path, '/')
-    let path_without_extension = substitute(file_path, '\.py$', '', '')
-    let test_path = 'tests/unit/' . path_without_extension
-    return test_path
-endfunction
-                                                                        " }}}2
-function! NameOfCurrentClass() " -----------------------------------------{{{2
-    let save_cursor = getpos(".")
-    normal $<cr>
-    call PythonDec('class', -1)
-    let line = getline('.')
-    call setpos('.', save_cursor)
-    let match_result = matchlist(line, ' *class \+\(\w\+\)')
-    let class_name = ClassToFilename(match_result[1])
-    return class_name
-endfunction
-                                                                        " }}}2
-function! TestFileForCurrentClass() " ------------------------------------{{{2
-    let class_name = NameOfCurrentClass()
-    let test_file_name = ModuleTestPath() . '/test_' . class_name . '.py'
-    return test_file_name
-endfunction
-                                                                        " }}}2
-function! TestModuleForCurrentFile() " -----------------------------------{{{2
-    let test_path = ModuleTestPath()
-    let test_module = substitute(test_path, '/', '.', 'g')
-    return test_module
-endfunction
-                                                                        " }}}2
-function! RunTestsForFile(args) " ----------------------------------------{{{2
-    if @% =~ 'test_'
-        call RunTests('%', a:args)
-    else
-        let test_file_name = TestModuleForCurrentFile()
-        call RunTests(test_file_name, a:args)
-    endif
-endfunction
-                                                                        " }}}2
-function! RunAllTests(args) " --------------------------------------------{{{2
-    if filereadable('./Makefile')
-        silent ! echo
-        "exec "set makeprg=make\\ NOSE='bin/nosetests\\ --no-color\\ --with-machineout'"
-        exec "set makeprg=env/bin/python\\ setup.py\\ -q\\ nosetests\\ --with-machineout\\ --no-color"
-        set errorformat=%f:%l:\ %m
-        exec "AsyncMakeGreen " . a:args
-    endif
-endfunction
-                                                                        " }}}2
-function! JumpToTestsForClass() " ----------------------------------------{{{2
-    exec 'e ' . TestFileForCurrentClass()
-endfunction
-                                                                        " }}}2
-function! PresentationSettings() " ---------------------------------------{{{2
-    "exec 'set guifont=Monaco:h22'
-    set guifont=Menlo\ Regular\ for\ Powerline:h24
-endfunction
                                                                         " }}}2
 function! EnsureDirExists(dir) " -----------------------------------------{{{2
     if a:dir != "."
@@ -728,38 +568,27 @@ command! -nargs=0 Standard call Standard()
                                                                         " }}}1
 " | 09. Plugins ................. Plugin-specific settings ---------------{{{1
 " |                                                                          |
-" | 09a. AsyncMakeGreen               |-----------------------------------{{{2
-"  \_________________________________________________________________________|
-let g:async_make_green_use_make_output_on_success = 0
-
-                                                                        " }}}2
-" | 09b. CommandT                     |-----------------------------------{{{2
+" | 09a. CommandT                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 "map ,t :CommandT<CR>
 "nnoremap ,b :CommandTBuffer<CR>
 
 "
-" | 09c. CtrlP                        |-----------------------------------{{{2
+" | 09b. CtrlP                        |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:ctrlp_map = ',t'
+let g:ctrlp_custom_ignore = {
+  \ 'dir': 'node_modules'
+  \ }
 
                                                                         " }}}2
                                                                         " }}}2
-" | 09d. delimitMate                  |-----------------------------------{{{2
+" | 09c. delimitMate                  |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:delimitMate_smart_quotes = 0
 
                                                                         " }}}2
-" | 09e. Gist                         |-----------------------------------{{{2
-"  \_________________________________________________________________________|
-let g:gist_github_hostname = 'github.colo.lair'
-let g:gist_force_http = 1
-let g:gist_open_browser_after_post = 1
-if filereadable($HOME."/.vimrc_secret_git")
-    exec "source ".$HOME."/.vimrc_secret_git"
-endif
-                                                                        " }}}2
-" | 09f. Indent Guides                |-----------------------------------{{{2
+" | 09d. Indent Guides                |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -768,46 +597,40 @@ let g:indent_guides_auto_colors = 0
 au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesOdd  guibg=#272727 | endif
 au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesEven guibg=#323232 | endif
                                                                         " }}}2
-" | 09g. JavaScript                   |-----------------------------------{{{2
+" | 09e. JavaScript                   |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:javascript_plugin_jsdoc = 1
                                                                         " }}}2
                                                                         " }}}2
-" | 09h. LustyJuggler / LustyExplorer |-----------------------------------{{{2
+" | 09f. LustyJuggler / LustyExplorer |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " High Sierra altered ruby version, breaking this plugin.
 let g:LustyExplorerSuppressRubyWarning = 1
                                                                         " }}}2
-" | 09i. Powerline                    |-----------------------------------{{{2
+" | 09g. Powerline                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:Powerline_symbols = 'fancy'
                                                                         " }}}2
-" | 09j. RedGreen                     |-----------------------------------{{{2
-"  \_________________________________________________________________________|
-hi GreenBar term=reverse ctermfg=white ctermbg=green guifg=white guibg=green4
-hi RedBar   term=reverse ctermfg=white ctermbg=red   guifg=white guibg=red3
-
-                                                                        " }}}2
-" | 09k. SnipMate                     |-----------------------------------{{{2
+" | 09h. SnipMate                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
     exec "source " . $HOME . "/.vim/snippets/support_functions.vim"
 endif
 
                                                                         " }}}2
-" | 09l. Surround                     |-----------------------------------{{{2
+" | 09i. Surround                     |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Switch between double/single quotes:
 nmap  <leader>'  cs"'
 nmap  <leader>"  cs'"
 
 
-" | 09m. Switch                       |-----------------------------------{{{2
+" | 09j. Switch                       |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:switch_mapping = "<C-t>"
 
                                                                         " }}}2
-" | 09n. Syntastic                    |-----------------------------------{{{2
+" | 09k. Syntastic                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Be sure to pip install flake8
 let g:syntastic_mode_map = { 'mode': 'active',
@@ -816,15 +639,20 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
+let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_php_checkers=['php', 'phpcs']
 let g:syntastic_php_phpcs_args='--standard=PSR2 -n'
+
+if filereadable("node_modules/@aw-int/aweber-webapp-scripts/.eslintrc") && !filereadable("./.eslintrc")
+    let g:syntastic_javascript_eslint_exe = 'npx eslint --config="node_modules/@aw-int/aweber-webapp-scripts/.eslintrc"'
+endif
 
 if !has("gui_running")
     let g:syntastic_enable_highlighting=0
 endif
 
                                                                         " }}}2
-" | 09o. Tabular                      |-----------------------------------{{{2
+" | 09l. Tabular                      |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 " Columnate arrays/lists.
 vnoremap <silent> <leader>= :Tab /=<CR>
@@ -832,41 +660,33 @@ vnoremap <silent> <leader>: :Tab /^[^:]*\zs:\zs/l0l0<CR>
 
 
                                                                         " }}}2
-" | 09p. Tagbar                       |-----------------------------------{{{2
+" | 09m. Tagbar                       |-----------------------------------{{{2
 "  \_________________________________________________________________________|
-nnoremap TT :TagbarToggle<CR>
+" nnoremap TT :TagbarToggle<CR>
 
 " From https://github.com/lukaszkorecki/CoffeeTags
-if executable('coffeetags')
-  let g:tagbar_type_coffee = {
-        \ 'ctagsbin' : 'coffeetags',
-        \ 'ctagsargs' : '',
-        \ 'kinds' : [
-        \ 'f:functions',
-        \ 'o:object',
-        \ ],
-        \ 'sro' : ".",
-        \ 'kind2scope' : {
-        \ 'f' : 'object',
-        \ 'o' : 'object',
-        \ }
-        \ }
-endif
+" if executable('coffeetags')
+"   let g:tagbar_type_coffee = {
+"         \ 'ctagsbin' : 'coffeetags',
+"         \ 'ctagsargs' : '',
+"         \ 'kinds' : [
+"         \ 'f:functions',
+"         \ 'o:object',
+"         \ ],
+"         \ 'sro' : ".",
+"         \ 'kind2scope' : {
+"         \ 'f' : 'object',
+"         \ 'o' : 'object',
+"         \ }
+"         \ }
+" endif
 
                                                                         " }}}2
-" | 09q. UltiSnips                    |-----------------------------------{{{2
+" | 09n. UltiSnips                    |-----------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-                                                                        " }}}2
-" | 09r. Zen-Coding                   |-----------------------------------{{{2
-"  \_________________________________________________________________________|
-let g:user_zen_settings = {'indentation': '  '}
-let g:ctrlp_custom_ignore = {
-  \ 'dir': 'node_modules'
-  \ }
 
                                                                         " }}}2
 
