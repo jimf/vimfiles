@@ -130,3 +130,6 @@
 [submodule "pack/bundle/start/vim-dispatch"]
 	path = pack/bundle/start/vim-dispatch
 	url = https://github.com/tpope/vim-dispatch.git
+[submodule "pack/bundle/start/vim-grepper"]
+	path = pack/bundle/start/vim-grepper
+	url = https://github.com/mhinz/vim-grepper.git
