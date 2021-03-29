@@ -251,7 +251,7 @@ if !has("gui_running")
 endif
 
 " Ignore these patterns during completion.
-set wildignore=*.pyc,*.egg-info/*,*.egg/*,*/node_modules/*,*/build/*,*/dist/*,package-lock.json
+set wildignore=*.pyc,*.egg-info/*,*.egg/*,*/node_modules/*,*/build/*,*/coverage/*,*/dist/*,package-lock.json
 
 function! GetProjectName()
     let location=expand('%:p')
