@@ -1,5 +1,9 @@
 priority -50
 
+global !p
+from javascript_snippets import (semi, space_before_function_paren, keyword_spacing)
+endglobal
+
 snippet @p "@param {Type} varname Description"
 @param {${1}}
 endsnippet
@@ -9,19 +13,68 @@ snippet @r "@return {Type} Description"
 endsnippet
 
 snippet imp "import Module from 'module'"
-import ${1} from '${2}';
+import ${1} from '${2}'`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet cl "console.log"
-console.log(${1});
+console.log(${1})`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet deb "debugger"
-debugger; // eslint-disable-line
+debugger`!p snip.rv = semi(snip)` // eslint-disable-line
+endsnippet
+
+snippet for "for (...) {...}"
+for (let ${1:i} = 0; $1 < $2; $1 += 1) {
+	${0:${VISUAL}}
+}
+endsnippet
+
+snippet if "if (condition) { ... }"
+if`!p snip.rv = keyword_spacing(snip)`(${1:true}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet ife "if (condition) { ... } else { ... }"
+if`!p snip.rv = keyword_spacing(snip)`(${1:true}) {
+	${VISUAL}$0
+}`!p snip.rv = keyword_spacing(snip)`else`!p snip.rv = keyword_spacing(snip)`{
+	${2}
+}
 endsnippet
 
 snippet Ok "Object.keys"
 Object.keys(${1})
+endsnippet
+
+snippet ret "Return statement"
+return ${VISUAL}$0`!p snip.rv = semi(snip)`
+endsnippet
+
+snippet switch
+switch`!p snip.rv = keyword_spacing(snip)`(${VISUAL}${1:expression}) {
+	case '${VISUAL}${3:case}':
+		${4}
+		break`!p snip.rv = semi(snip)`
+	${0}
+	default:
+		${2}
+}
+endsnippet
+
+snippet case "case 'xyz': ... break"
+case`!p snip.rv = keyword_spacing(snip)`'${VISUAL}${1:case}':
+	${VISUAL}$0
+	break`!p snip.rv = semi(snip)`
+endsnippet
+
+snippet try "try { ... } catch(e) { ... }"
+try {
+	${0:${VISUAL}}
+} catch (${1:e}) {
+	${2:/* handle error */}
+}
 endsnippet
 
 snippet uuid1 "Stub uuid 1"

@@ -555,6 +555,11 @@ endfunction
                                                                         " }}}2
 function! Standard() " ---------------------------------------------------{{{2
     let g:syntastic_javascript_checkers = ['standard']
+    let g:ultisnips_javascript = {
+        \ 'keyword-spacing': 'always',
+        \ 'semi': 'never',
+        \ 'space-before-function-paren': 'always',
+        \ }
     call SetWidth(2)
 endfunction
 command! -nargs=0 Standard call Standard()

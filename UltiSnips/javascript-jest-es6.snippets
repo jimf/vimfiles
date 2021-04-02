@@ -1,47 +1,45 @@
 priority -50
 
+global !p
+from javascript_snippets import (semi, space_before_function_paren, keyword_spacing)
+endglobal
+
 snippet ae "after each (js)" b
 afterEach(() => {
 	${1}
-});
+})`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet be "before each (js)" b
 beforeEach(() => {
 	${1}
-});
+})`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet desc "Describe (js)" b
 describe('${1}', () => {
 	${2}
-});
-endsnippet
-
-snippet fdesc "Describe (js)" b
-fdescribe('${1}', () => {
-	${2}
-});
+})`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet it "it (js)" b
 it('should ${1}', () => {
 	${2}
-});
+})`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet tb "to be (js)" b
-expect(${1}).toBe(${2});
+expect(${1}).toBe(${2})`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet te "to equal (js)" b
-expect(${1}).toEqual(${2});
+expect(${1}).toEqual(${2})`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet thbc "to have been called (js)" b
-expect(${1}).toHaveBeenCalled();
+expect(${1}).toHaveBeenCalled()`!p snip.rv = semi(snip)`
 endsnippet
 
 snippet thbcw "to have been called with (js)" b
-expect(${1}).toHaveBeenCalledWith(${2});
+expect(${1}).toHaveBeenCalledWith(${2})`!p snip.rv = semi(snip)`
 endsnippet
