@@ -69,6 +69,13 @@ augroup CoffeescriptEvents                                              " {{{2
     autocmd FileType coffee setlocal isk-=:
 augroup END
 
+augroup GitEvents                                                       " {{{2
+    autocmd!
+    if version >= 700
+        autocmd FileType gitcommit setlocal spell spelllang=en_us
+    endif
+augroup END
+                                                                        " }}}2
 augroup LessEvents                                                      " {{{2
     autocmd!
     autocmd FileType less.css setlocal softtabstop=2
