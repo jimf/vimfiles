@@ -162,6 +162,14 @@ Also supports the typescript tsx file.
 
 This vim bundle adds syntax highlighting, indenting and autocompletion for the dynamic stylesheet language LESS.
 
+### [lightline](https://github.com/itchyny/lightline.vim)
+
+A light and configurable statusline/tabline plugin for Vim.
+
+Requires:
+
+- Vim 7.3
+
 ### [lustyjuggler](https://github.com/sjbach/lusty.git)
 
 LustyJuggler is a high speed buffer juggler.
