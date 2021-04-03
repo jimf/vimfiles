@@ -234,11 +234,6 @@ hi CursorLine term=NONE cterm=NONE ctermbg=236 guifg=NONE guibg=#333333
 hi CursorLineNr term=bold cterm=NONE ctermfg=11 gui=bold guifg=Yellow
 
 set wildmode=longest,list
-if exists("*fugitive#statusline")
-    set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%{fugitive#statusline()}%=%-14.(%l,%c/%L%V%)\ %P
-else
-    set statusline=\ %f%m%r%h\ %w\ \ %r%{Context()}%h%=%-14.(%l,%c/%L%V%)\ %P
-endif
 
 if exists('$TMUX')
     " Disable background color erase (BCE) in tmux to fix bgcolor
@@ -259,56 +254,6 @@ endif
 
 " Ignore these patterns during completion.
 set wildignore=*.pyc,*.egg-info/*,*.egg/*,*/node_modules/*,*/build/*,*/coverage/*,*/dist/*,package-lock.json
-
-function! GetProjectName()
-    let location=expand('%:p')
-    if location == ''
-        let location = getcwd()
-    endif
-    let location = substitute(location, $HOME, "~", "g")
-    if match(location, '\~/git/') == 0
-        return substitute(substitute(location, '\~/git/', '', ''), '/.*', '', '')
-    else
-        return ''
-    endif
-endfunction
-
-function! GetMVCType()
-    let parentdir = expand('%:p:h:t')
-    if parentdir =~ 'controller\|controllers'
-        return 'controller'
-    elseif parentdir == 'model\|models'
-        return 'model'
-    elseif parentdir =~ 'views\|templates\|view_wrappers'
-        return 'view'
-    else
-        return ''
-endfunction
-
-function! IsTestFile()
-    return match(expand('%:p'), 'test') >= 0
-endfunction
-
-function! Context()
-    let context = ''
-    let project = GetProjectName()
-    if project != ''
-        let context = '[' . project . ']'
-    else
-        let context = '[No Project]'
-    endif
-
-    let type = GetMVCType()
-    if type != ''
-        if IsTestFile()
-            let context = context . '[' . type . ' test]'
-        else
-            let context = context . '[' . type . ']'
-        endif
-    endif
-
-    return context
-endfunction
 
 " Enable folding and make it indent-sensitive.
 if version >= 600
