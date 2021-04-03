@@ -70,9 +70,6 @@
 [submodule "bundle/commentary"]
 	path = bundle/commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "bundle/json"]
-	path = bundle/json
-	url = https://github.com/vim-scripts/vim-json-bundle.git
 [submodule "bundle/vim-handlebars"]
 	path = bundle/vim-handlebars
 	url = https://github.com/nono/vim-handlebars.git
