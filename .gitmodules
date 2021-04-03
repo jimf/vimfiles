@@ -100,9 +100,6 @@
 [submodule "pack/bundle/start/rust.vim"]
 	path = pack/bundle/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
-[submodule "pack/bundle/start/powerline"]
-	path = pack/bundle/start/powerline
-	url = https://github.com/Lokaltog/vim-powerline.git
 [submodule "pack/bundle/start/vim-crystal"]
 	path = pack/bundle/start/vim-crystal
 	url = https://github.com/rhysd/vim-crystal.git
