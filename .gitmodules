@@ -1,110 +1,110 @@
-[submodule "bundle/argtextobj"]
-	path = bundle/argtextobj
+[submodule "pack/bundle/start/argtextobj"]
+	path = pack/bundle/start/argtextobj
 	url = https://github.com/vim-scripts/argtextobj.vim.git
-[submodule "bundle/javascriptcomplete"]
-	path = bundle/javascriptcomplete
+[submodule "pack/bundle/start/javascriptcomplete"]
+	path = pack/bundle/start/javascriptcomplete
 	url = git@github.com:jimf/javascriptcomplete.git
-[submodule "bundle/IndentAnything"]
-	path = bundle/IndentAnything
+[submodule "pack/bundle/start/IndentAnything"]
+	path = pack/bundle/start/IndentAnything
 	url = https://github.com/vim-scripts/IndentAnything.git
-[submodule "bundle/syntastic"]
-	path = bundle/syntastic
+[submodule "pack/bundle/start/syntastic"]
+	path = pack/bundle/start/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule "bundle/fugitive"]
-	path = bundle/fugitive
+[submodule "pack/bundle/start/fugitive"]
+	path = pack/bundle/start/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "bundle/bufexplorer"]
-	path = bundle/bufexplorer
+[submodule "pack/bundle/start/bufexplorer"]
+	path = pack/bundle/start/bufexplorer
 	url = https://github.com/vim-scripts/bufexplorer.zip.git
-[submodule "bundle/xml"]
-	path = bundle/xml
+[submodule "pack/bundle/start/xml"]
+	path = pack/bundle/start/xml
 	url = https://github.com/vim-scripts/xml.vim.git
-[submodule "bundle/vim-addon-mw-utils"]
-	path = bundle/vim-addon-mw-utils
+[submodule "pack/bundle/start/vim-addon-mw-utils"]
+	path = pack/bundle/start/vim-addon-mw-utils
 	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-[submodule "bundle/tlib"]
-	path = bundle/tlib
+[submodule "pack/bundle/start/tlib"]
+	path = pack/bundle/start/tlib
 	url = https://github.com/tomtom/tlib_vim.git
-[submodule "bundle/Align"]
-	path = bundle/Align
+[submodule "pack/bundle/start/Align"]
+	path = pack/bundle/start/Align
 	url = https://github.com/vim-scripts/Align.git
-[submodule "bundle/delimitMate"]
-	path = bundle/delimitMate
+[submodule "pack/bundle/start/delimitMate"]
+	path = pack/bundle/start/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
-[submodule "bundle/enter-indent"]
-	path = bundle/enter-indent
+[submodule "pack/bundle/start/enter-indent"]
+	path = pack/bundle/start/enter-indent
 	url = https://github.com/acustodioo/vim-enter-indent.git
-[submodule "bundle/surround"]
-	path = bundle/surround
+[submodule "pack/bundle/start/surround"]
+	path = pack/bundle/start/surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "bundle/lustyjuggler"]
-	path = bundle/lustyjuggler
+[submodule "pack/bundle/start/lustyjuggler"]
+	path = pack/bundle/start/lustyjuggler
 	url = https://github.com/sjbach/lusty.git
-[submodule "bundle/MatchTag"]
-	path = bundle/MatchTag
+[submodule "pack/bundle/start/MatchTag"]
+	path = pack/bundle/start/MatchTag
 	url = https://github.com/gregsexton/MatchTag.git
-[submodule "bundle/matchit"]
-	path = bundle/matchit
+[submodule "pack/bundle/start/matchit"]
+	path = pack/bundle/start/matchit
 	url = https://github.com/vim-scripts/matchit.zip.git
-[submodule "bundle/css-color"]
-	path = bundle/css-color
+[submodule "pack/bundle/start/css-color"]
+	path = pack/bundle/start/css-color
 	url = https://github.com/ap/vim-css-color.git
-[submodule "bundle/ragtag"]
-	path = bundle/ragtag
+[submodule "pack/bundle/start/ragtag"]
+	path = pack/bundle/start/ragtag
 	url = https://github.com/tpope/vim-ragtag.git
-[submodule "bundle/coffee-script"]
-	path = bundle/coffee-script
+[submodule "pack/bundle/start/coffee-script"]
+	path = pack/bundle/start/coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "bundle/tabular"]
-	path = bundle/tabular
+[submodule "pack/bundle/start/tabular"]
+	path = pack/bundle/start/tabular
 	url = https://github.com/godlygeek/tabular.git
-[submodule "bundle/indent-guides"]
-	path = bundle/indent-guides
+[submodule "pack/bundle/start/indent-guides"]
+	path = pack/bundle/start/indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "bundle/BufOnly"]
-	path = bundle/BufOnly
+[submodule "pack/bundle/start/BufOnly"]
+	path = pack/bundle/start/BufOnly
 	url = https://github.com/vim-scripts/BufOnly.vim.git
-[submodule "bundle/commentary"]
-	path = bundle/commentary
+[submodule "pack/bundle/start/commentary"]
+	path = pack/bundle/start/commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "bundle/emmet-vim"]
-	path = bundle/emmet-vim
+[submodule "pack/bundle/start/emmet-vim"]
+	path = pack/bundle/start/emmet-vim
 	url = https://github.com/mattn/emmet-vim
-[submodule "bundle/vim-less"]
-	path = bundle/vim-less
+[submodule "pack/bundle/start/vim-less"]
+	path = pack/bundle/start/vim-less
 	url = https://github.com/groenewege/vim-less.git
-[submodule "bundle/vim-javascript"]
-	path = bundle/vim-javascript
+[submodule "pack/bundle/start/vim-javascript"]
+	path = pack/bundle/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "bundle/vim-mustache-handlebars"]
-	path = bundle/vim-mustache-handlebars
+[submodule "pack/bundle/start/vim-mustache-handlebars"]
+	path = pack/bundle/start/vim-mustache-handlebars
 	url = https://github.com/mustache/vim-mustache-handlebars.git
-[submodule "bundle/vim-over"]
-	path = bundle/vim-over
+[submodule "pack/bundle/start/vim-over"]
+	path = pack/bundle/start/vim-over
 	url = https://github.com/osyo-manga/vim-over.git
-[submodule "bundle/switch"]
-	path = bundle/switch
+[submodule "pack/bundle/start/switch"]
+	path = pack/bundle/start/switch
 	url = https://github.com/AndrewRadev/switch.vim.git
-[submodule "bundle/ultisnips"]
-	path = bundle/ultisnips
+[submodule "pack/bundle/start/ultisnips"]
+	path = pack/bundle/start/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule "bundle/vim-pug"]
-	path = bundle/vim-pug
+[submodule "pack/bundle/start/vim-pug"]
+	path = pack/bundle/start/vim-pug
 	url = https://github.com/digitaltoad/vim-pug.git
-[submodule "bundle/syntastic-local-eslint"]
-	path = bundle/syntastic-local-eslint
+[submodule "pack/bundle/start/syntastic-local-eslint"]
+	path = pack/bundle/start/syntastic-local-eslint
 	url = https://github.com/mtscout6/syntastic-local-eslint.vim
-[submodule "bundle/vim-tmux-navigator"]
-	path = bundle/vim-tmux-navigator
+[submodule "pack/bundle/start/vim-tmux-navigator"]
+	path = pack/bundle/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "bundle/rust.vim"]
-	path = bundle/rust.vim
+[submodule "pack/bundle/start/rust.vim"]
+	path = pack/bundle/start/rust.vim
 	url = https://github.com/rust-lang/rust.vim.git
-[submodule "bundle/powerline"]
-	path = bundle/powerline
+[submodule "pack/bundle/start/powerline"]
+	path = pack/bundle/start/powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
-[submodule "bundle/vim-crystal"]
-	path = bundle/vim-crystal
+[submodule "pack/bundle/start/vim-crystal"]
+	path = pack/bundle/start/vim-crystal
 	url = https://github.com/rhysd/vim-crystal.git
 [submodule "pack/bundle/start/vim-projectionist"]
 	path = pack/bundle/start/vim-projectionist
