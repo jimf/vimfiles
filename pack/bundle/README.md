@@ -173,12 +173,6 @@ Requires:
 - Vim 7.0
 - ruby
 
-### [matchit](https://github.com/vim-scripts/matchit.zip.git)
-
-The matchit.vim script allows you to configure % to match more than just single characters.
-You can match words and even regular expressions.
-Also, matching treats strings and comments (as recognized by the syntax highlighting mechanism) intelligently.
-
 ### [MatchTag](https://github.com/gregsexton/MatchTag.git)
 
 This plugin highlights the matching HTML tag when the cursor is positioned on a tag.

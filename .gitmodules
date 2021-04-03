@@ -40,9 +40,6 @@
 [submodule "pack/bundle/start/MatchTag"]
 	path = pack/bundle/start/MatchTag
 	url = https://github.com/gregsexton/MatchTag.git
-[submodule "pack/bundle/start/matchit"]
-	path = pack/bundle/start/matchit
-	url = https://github.com/vim-scripts/matchit.zip.git
 [submodule "pack/bundle/start/css-color"]
 	path = pack/bundle/start/css-color
 	url = https://github.com/ap/vim-css-color.git
