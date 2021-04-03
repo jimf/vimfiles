@@ -124,3 +124,6 @@
 [submodule "pack/bundle/start/vim-jsx-pretty"]
 	path = pack/bundle/start/vim-jsx-pretty
 	url = https://github.com/MaxMEllon/vim-jsx-pretty.git
+[submodule "pack/bundle/start/lightline"]
+	path = pack/bundle/start/lightline
+	url = https://github.com/itchyny/lightline.vim.git
