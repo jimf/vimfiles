@@ -10,12 +10,6 @@ Requires:
 
 - Vim 7.0
 
-### [addon-mw-utils](https://github.com/MarcWeber/vim-addon-mw-utils.git)
-
-Provides utility functions.
-No idea why I have this.
-I think it's a requirement of another plugin, but I'm not sure which one.
-
 ### [Align](https://github.com/vim-scripts/Align)
 
 Align and AlignMaps lets you align statements on their equal signs, make comment boxes, align comments, align declarations, etc.

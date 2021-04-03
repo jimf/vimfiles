@@ -19,9 +19,6 @@
 [submodule "pack/bundle/start/xml"]
 	path = pack/bundle/start/xml
 	url = https://github.com/vim-scripts/xml.vim.git
-[submodule "pack/bundle/start/vim-addon-mw-utils"]
-	path = pack/bundle/start/vim-addon-mw-utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
 [submodule "pack/bundle/start/tlib"]
 	path = pack/bundle/start/tlib
 	url = https://github.com/tomtom/tlib_vim.git
