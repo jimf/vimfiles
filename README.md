@@ -18,3 +18,8 @@ your environment and preferences.
     cd ~/git/vimfiles
     git submodule init
     git submodule update
+
+## Plugins
+
+I manage my plugins using Vim 8's native package management and git submodules.
+For more information, see the [bundle README](pack/bundle/README.md).
