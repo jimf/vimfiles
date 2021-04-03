@@ -133,3 +133,6 @@
 [submodule "pack/bundle/start/vim-abolish"]
 	path = pack/bundle/start/vim-abolish
 	url = https://github.com/tpope/vim-abolish.git
+[submodule "pack/bundle/start/vim-json"]
+	path = pack/bundle/start/vim-json
+	url = https://github.com/elzr/vim-json.git
