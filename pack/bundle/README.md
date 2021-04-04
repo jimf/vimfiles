@@ -101,6 +101,14 @@ Or maybe it's the premier Git plugin for Vim?
 Either way, it's "so awesome, it should be illegal".
 That's why it's called Fugitive.
 
+### [FZF](https://github.com/junegunn/fzf)
+
+fzf is a general-purpose command-line fuzzy finder.
+
+Requires:
+
+- Vim 8.0
+
 ### [grepper](https://github.com/mhinz/vim-grepper.git)
 
 Use your favorite grep tool (ag, ack, git grep, ripgrep, pt, sift, findstr, grep) to start an asynchronous search.
