@@ -121,3 +121,6 @@
 [submodule "pack/bundle/start/lightline"]
 	path = pack/bundle/start/lightline
 	url = https://github.com/itchyny/lightline.vim.git
+[submodule "pack/bundle/start/fzf"]
+	path = pack/bundle/start/fzf
+	url = https://github.com/junegunn/fzf.git
