@@ -244,10 +244,6 @@ Requires:
 
 Plugin for aligning text into columns.
 
-### themes
-
-Old Vim theme pack. I don't remember where I got these.
-
 ### [tlib](https://github.com/tomtom/tlib_vim.git)
 
 Provides utility functions.
