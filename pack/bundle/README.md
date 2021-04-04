@@ -232,14 +232,6 @@ Requires:
 - Vim 7.4
 - external linter(s) (e.g., [eslint](https://eslint.org/))
 
-### [syntastic-local-eslint](https://github.com/mtscout6/syntastic-local-eslint.vim)
-
-Prefer local repo install of eslint over global install with syntastic.
-
-Requires:
-
-- syntastic plugin
-
 ### [tabular](https://github.com/godlygeek/tabular.git)
 
 Plugin for aligning text into columns.

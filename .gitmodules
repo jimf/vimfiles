@@ -85,9 +85,6 @@
 [submodule "pack/bundle/start/vim-pug"]
 	path = pack/bundle/start/vim-pug
 	url = https://github.com/digitaltoad/vim-pug.git
-[submodule "pack/bundle/start/syntastic-local-eslint"]
-	path = pack/bundle/start/syntastic-local-eslint
-	url = https://github.com/mtscout6/syntastic-local-eslint.vim
 [submodule "pack/bundle/start/vim-tmux-navigator"]
 	path = pack/bundle/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
