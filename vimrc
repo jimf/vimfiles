@@ -2,17 +2,6 @@
 " Maintainer: Jim Fitzpatrick <fitzpatrick.jim@gmail.com>                    |
 "   Revision: $Rev$                                                          |
 "        URL: http://github.com/jimf/vimfiles                                |
-"                                                                            |
-" Sections:                                                                  |
-"   01. General ................. General Vim behavior                       |
-"   02. Events .................. General autocmd events                     |
-"   03. Theme/Colors ............ Colors, fonts, etc.                        |
-"   04. Vim UI .................. User interface behavior                    |
-"   05. Text Formatting/Layout .. Text, tab, indentation related             |
-"   06. Abbreviations ........... General abbreviations                      |
-"   07. Mappings ................ General mappings                           |
-"   08. Functions/Commands ...... General functions and commands             |
-"   09. Plugins                                                              |
 "-------------------------------------------------------------------------}}}1
 
 " | 01. General ................. General Vim behavior -------------------{{{1
@@ -520,7 +509,7 @@ command! -nargs=0 Standard call Standard()
                                                                         " }}}1
 " | 09. Plugins ................. Plugin-specific settings ---------------{{{1
 " |                                                                          |
-" | 09a. CtrlP                        |-----------------------------------{{{2
+" | CtrlP                        |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:ctrlp_map = ',t'
 let g:ctrlp_custom_ignore = {
@@ -529,12 +518,12 @@ let g:ctrlp_custom_ignore = {
 
                                                                         " }}}2
                                                                         " }}}2
-" | 09b. delimitMate                  |-----------------------------------{{{2
+" | delimitMate                  |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:delimitMate_smart_quotes = 0
 
                                                                         " }}}2
-" | 09c. Indent Guides                |-----------------------------------{{{2
+" | Indent Guides                |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
@@ -543,36 +532,36 @@ let g:indent_guides_auto_colors = 0
 au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesOdd  guibg=#272727 | endif
 au VimEnter,Colorscheme * if &ft != 'help' | :hi IndentGuidesEven guibg=#323232 | endif
                                                                         " }}}2
-" | 09d. JavaScript                   |-----------------------------------{{{2
+" | JavaScript                   |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:javascript_plugin_jsdoc = 1
                                                                         " }}}2
                                                                         " }}}2
-" | 09e. LustyJuggler / LustyExplorer |-----------------------------------{{{2
+" | LustyJuggler / LustyExplorer |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 " High Sierra altered ruby version, breaking this plugin.
 let g:LustyExplorerSuppressRubyWarning = 1
                                                                         " }}}2
-" | 09f. SnipMate                     |-----------------------------------{{{2
+" | SnipMate                     |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
     exec "source " . $HOME . "/.vim/snippets/support_functions.vim"
 endif
 
                                                                         " }}}2
-" | 09g. Surround                     |-----------------------------------{{{2
+" | Surround                     |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 " Switch between double/single quotes:
 nmap  <leader>'  cs"'
 nmap  <leader>"  cs'"
 
 
-" | 09h. Switch                       |-----------------------------------{{{2
+" | Switch                       |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:switch_mapping = "<C-t>"
 
                                                                         " }}}2
-" | 09i. Syntastic                    |-----------------------------------{{{2
+" | Syntastic                    |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 " Be sure to pip install flake8
 let g:syntastic_mode_map = { 'mode': 'active',
@@ -594,7 +583,7 @@ if !has("gui_running")
 endif
 
                                                                         " }}}2
-" | 09j. Tabular                      |-----------------------------------{{{2
+" | Tabular                      |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 " Columnate arrays/lists.
 vnoremap <silent> <leader>= :Tab /=<CR>
@@ -602,7 +591,7 @@ vnoremap <silent> <leader>: :Tab /^[^:]*\zs:\zs/l0l0<CR>
 
 
                                                                         " }}}2
-" | 09k. UltiSnips                    |-----------------------------------{{{2
+" | UltiSnips                    |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
