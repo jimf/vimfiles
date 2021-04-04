@@ -223,15 +223,6 @@ Requires:
 
 Intelligently switch the word under the cursor with alternates.
 
-### [syntastic](https://github.com/scrooloose/syntastic.git)
-
-Syntastic is a syntax checking plugin that runs files through external syntax checkers and displays any resulting errors to the user.
-
-Requires:
-
-- Vim 7.4
-- external linter(s) (e.g., [eslint](https://eslint.org/))
-
 ### [tabular](https://github.com/godlygeek/tabular.git)
 
 Plugin for aligning text into columns.
