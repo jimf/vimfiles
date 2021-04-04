@@ -509,6 +509,18 @@ command! -nargs=0 Standard call Standard()
                                                                         " }}}1
 " | 09. Plugins ................. Plugin-specific settings ---------------{{{1
 " |                                                                          |
+" | ALE                          |----------------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ }
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+let g:ale_set_highlights = 0
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
+
+                                                                        " }}}2
 " | delimitMate                  |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 let g:delimitMate_smart_quotes = 0

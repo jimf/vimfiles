@@ -10,6 +10,14 @@ Requires:
 
 - Vim 7.0
 
+### [ALE](https://github.com/dense-analysis/ale)
+
+ALE (Asynchronous Lint Engine) is a plugin providing linting (syntax checking and semantic errors) in NeoVim 0.2.0+ and Vim 8 while you edit your text files, and acts as a Vim Language Server Protocol client.
+
+Requires:
+
+- Vim 8.0
+
 ### [Align](https://github.com/vim-scripts/Align)
 
 Align and AlignMaps lets you align statements on their equal signs, make comment boxes, align comments, align declarations, etc.
