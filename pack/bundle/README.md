@@ -235,12 +235,6 @@ Intelligently switch the word under the cursor with alternates.
 
 Plugin for aligning text into columns.
 
-### [tlib](https://github.com/tomtom/tlib_vim.git)
-
-Provides utility functions.
-
-NOTE: I don't use this directly. I believe it's required by another plugin.
-
 ### [tmux-navigator](https://github.com/christoomey/vim-tmux-navigator.git)
 
 This plugin is a repackaging of the tmux-navigator configuration described in [this gist](https://gist.github.com/mislav/5189704).
