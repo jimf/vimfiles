@@ -4,9 +4,6 @@
 [submodule "pack/bundle/start/javascriptcomplete"]
 	path = pack/bundle/start/javascriptcomplete
 	url = git@github.com:jimf/javascriptcomplete.git
-[submodule "pack/bundle/start/IndentAnything"]
-	path = pack/bundle/start/IndentAnything
-	url = https://github.com/vim-scripts/IndentAnything.git
 [submodule "pack/bundle/start/fugitive"]
 	path = pack/bundle/start/fugitive
 	url = https://github.com/tpope/vim-fugitive.git

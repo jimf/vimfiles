@@ -126,11 +126,6 @@ Requires
 
 - Vim 7.3
 
-### [IndentAnything](https://github.com/vim-scripts/IndentAnything.git)
-
-The IndentAnything plugin is intended to make it easier to write new indentation scripts and/or supplement existing ones.
-It makes the assumption that all indentable languages have similar characteristics.
-
 ### [indent-guides](https://github.com/nathanaelkane/vim-indent-guides.git)
 
 Indent Guides is a plugin for visually displaying indent levels in Vim.
