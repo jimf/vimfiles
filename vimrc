@@ -526,6 +526,16 @@ highlight clear ALEWarningSign
 let g:delimitMate_smart_quotes = 0
 
                                                                         " }}}2
+" | Emmet                        |----------------------------------------{{{2
+"  \_________________________________________________________________________|
+" Turn on Emmet for JSX in *.js files
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\}
+
+                                                                        " }}}2
 " | FZF                          |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 nnoremap ,t :<C-u>FZF<CR>
