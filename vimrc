@@ -564,6 +564,29 @@ let g:javascript_plugin_jsdoc = 1
 "  \_________________________________________________________________________|
 let g:jsx_ext_required = 0
                                                                         " }}}2
+" | Lightline                    |----------------------------------------{{{2
+"  \_________________________________________________________________________|
+" Modifications from stock setup:
+" active.left:
+"   - add projectiontype
+"   - replace filename with relativepath
+" active.right:
+"   - remove ['fileformat', 'fileencoding', 'filetype']
+let g:lightline = {
+    \ 'active': {
+    \   'left': [['mode', 'paste'], ['projectiontype', 'readonly', 'relativepath', 'modified']],
+    \   'right': [['lineinfo'], ['percent']],
+    \ },
+    \ 'component_function': {
+    \   'projectiontype': 'LightlineProjectionistType',
+    \ },
+    \ }
+
+function! LightlineProjectionistType()
+    return join(projectionist#query_scalar('type'), '+')
+endfunction
+
+                                                                        " }}}2
 " | LustyJuggler / LustyExplorer |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 " High Sierra altered ruby version, breaking this plugin.
