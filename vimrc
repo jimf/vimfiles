@@ -524,7 +524,11 @@ highlight clear ALEWarningSign
                                                                         " }}}2
 " | delimitMate                  |----------------------------------------{{{2
 "  \_________________________________________________________________________|
-let g:delimitMate_smart_quotes = 0
+" Temporarily disable enter-indent to experiment with <CR> expansion via
+" delimitMate. If I can achieve what I want with delimitMate, I'll be
+" removing enter-indent entirely.
+let g:loaded_enter_indent = 1
+let g:delimitMate_expand_cr = 1
 
                                                                         " }}}2
 " | Emmet                        |----------------------------------------{{{2
