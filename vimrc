@@ -298,6 +298,7 @@ au BufReadPost *
 "  \_________________________________________________________________________|
 set fo=tcrqn             " See help (complex).
 set ai                   " Auto-indent.
+set backspace=2          " Backspace behavior.
 "set si                   " Smart indent.      \ Replaced w/ filetype indent
 "set cindent              " C-style indenting. /
 set cinkeys-=0#          " Prevent unindenting of '#'.
