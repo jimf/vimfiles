@@ -33,6 +33,10 @@ You can d(elete), c(hange), v(select) an argument or inner argument in familiar 
 That is, such as `daa` (delete-an-argument), `cia` (change-inner-argument) `via` (select-inner-argument).
 What this script does is more than just typing `F,dt,` because it recognizes inclusion relationship of parentheses.
 
+### [auto-pairs](https://github.com/jiangmiao/auto-pairs)
+
+Insert or delete brackets, parens, quotes in pairs.
+
 ### [bufexplorer](https://github.com/vim-scripts/bufexplorer.zip.git)
 
 With bufexplorer, you can quickly and easily switch between buffers by using the one of the default public interfaces.
