@@ -19,9 +19,6 @@
 [submodule "pack/bundle/start/delimitMate"]
 	path = pack/bundle/start/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
-[submodule "pack/bundle/start/enter-indent"]
-	path = pack/bundle/start/enter-indent
-	url = https://github.com/acustodioo/vim-enter-indent.git
 [submodule "pack/bundle/start/surround"]
 	path = pack/bundle/start/surround
 	url = https://github.com/tpope/vim-surround.git

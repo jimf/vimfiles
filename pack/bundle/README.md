@@ -98,10 +98,6 @@ Requires:
 
 - Vim 7.0
 
-### [enter-indent](https://github.com/acustodioo/vim-enter-indent.git)
-
-This plugin facilitates the relocation and indentation of single line tags for a block of code.
-
 ### [fugitive](https://github.com/tpope/vim-fugitive.git)
 
 Fugitive is the premier Vim plugin for Git.
