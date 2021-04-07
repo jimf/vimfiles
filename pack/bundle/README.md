@@ -197,14 +197,6 @@ Vim syntax highlighting for Pug (formerly Jade) templates.
 
 A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more (formerly allml).
 
-### [rust](https://github.com/rust-lang/rust.vim.git)
-
-This is a Vim plugin that provides Rust file detection, syntax highlighting, formatting, Syntastic integration, and more.
-
-Requires:
-
-- Vim 8.0
-
 ### [surround](https://github.com/tpope/vim-surround.git)
 
 Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more.

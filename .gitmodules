@@ -70,9 +70,6 @@
 [submodule "pack/bundle/start/vim-tmux-navigator"]
 	path = pack/bundle/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
-[submodule "pack/bundle/start/rust.vim"]
-	path = pack/bundle/start/rust.vim
-	url = https://github.com/rust-lang/rust.vim.git
 [submodule "pack/bundle/start/vim-crystal"]
 	path = pack/bundle/start/vim-crystal
 	url = https://github.com/rhysd/vim-crystal.git
