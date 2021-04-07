@@ -112,3 +112,6 @@
 [submodule "pack/bundle/start/vim-javascript"]
 	path = pack/bundle/start/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "pack/bundle/start/auto-pairs"]
+	path = pack/bundle/start/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
