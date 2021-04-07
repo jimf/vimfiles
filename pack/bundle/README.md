@@ -73,14 +73,6 @@ Requires:
 
 - Vim 7.0
 
-### [delimitMate](https://github.com/Raimondi/delimitMate.git)
-
-This plug-in provides automatic closing of quotes, parenthesis, brackets, etc., besides some other related features that should make your time in insert mode a little bit easier, like syntax awareness (will not insert the closing delimiter in comments and other configurable regions), and expansions (off by default), and some more.
-
-Requires:
-
-- Vim 7.0
-
 ### [dispatch](https://github.com/tpope/vim-dispatch.git)
 
 Leverage the power of Vim's compiler plugins without being bound by synchronicity.

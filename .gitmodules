@@ -16,9 +16,6 @@
 [submodule "pack/bundle/start/Align"]
 	path = pack/bundle/start/Align
 	url = https://github.com/vim-scripts/Align.git
-[submodule "pack/bundle/start/delimitMate"]
-	path = pack/bundle/start/delimitMate
-	url = https://github.com/Raimondi/delimitMate.git
 [submodule "pack/bundle/start/surround"]
 	path = pack/bundle/start/surround
 	url = https://github.com/tpope/vim-surround.git
