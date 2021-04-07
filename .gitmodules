@@ -109,3 +109,6 @@
 [submodule "pack/bundle/start/ale"]
 	path = pack/bundle/start/ale
 	url = https://github.com/dense-analysis/ale.git
+[submodule "pack/bundle/start/vim-javascript"]
+	path = pack/bundle/start/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
