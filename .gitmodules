@@ -49,9 +49,6 @@
 [submodule "pack/bundle/start/vim-over"]
 	path = pack/bundle/start/vim-over
 	url = https://github.com/osyo-manga/vim-over.git
-[submodule "pack/bundle/start/switch"]
-	path = pack/bundle/start/switch
-	url = https://github.com/AndrewRadev/switch.vim.git
 [submodule "pack/bundle/start/ultisnips"]
 	path = pack/bundle/start/ultisnips
 	url = https://github.com/SirVer/ultisnips.git

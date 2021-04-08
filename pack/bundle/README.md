@@ -198,10 +198,6 @@ Requires:
 
 - Vim 7.0
 
-### [switch](https://github.com/AndrewRadev/switch.vim.git)
-
-Intelligently switch the word under the cursor with alternates.
-
 ### [tabular](https://github.com/godlygeek/tabular.git)
 
 Plugin for aligning text into columns.
