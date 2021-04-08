@@ -97,3 +97,6 @@
 [submodule "pack/bundle/start/auto-pairs"]
 	path = pack/bundle/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "pack/bundle/start/emmet-vim"]
+	path = pack/bundle/start/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
