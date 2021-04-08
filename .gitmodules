@@ -46,9 +46,6 @@
 [submodule "pack/bundle/start/commentary"]
 	path = pack/bundle/start/commentary
 	url = https://github.com/tpope/vim-commentary.git
-[submodule "pack/bundle/start/emmet-vim"]
-	path = pack/bundle/start/emmet-vim
-	url = https://github.com/mattn/emmet-vim
 [submodule "pack/bundle/start/vim-mustache-handlebars"]
 	path = pack/bundle/start/vim-mustache-handlebars
 	url = https://github.com/mustache/vim-mustache-handlebars.git
