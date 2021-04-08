@@ -97,3 +97,6 @@
 [submodule "pack/bundle/start/emmet-vim"]
 	path = pack/bundle/start/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "pack/bundle/start/vim-mustache-handlebars"]
+	path = pack/bundle/start/vim-mustache-handlebars
+	url = https://github.com/mustache/vim-mustache-handlebars.git
