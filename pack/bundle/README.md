@@ -189,10 +189,6 @@ Requires:
 
 - Vim 7.0
 
-### [pug](https://github.com/digitaltoad/vim-pug.git)
-
-Vim syntax highlighting for Pug (formerly Jade) templates.
-
 ### [ragtag](https://github.com/tpope/vim-ragtag.git)
 
 A set of mappings for HTML, XML, PHP, ASP, eRuby, JSP, and more (formerly allml).

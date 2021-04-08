@@ -64,9 +64,6 @@
 [submodule "pack/bundle/start/ultisnips"]
 	path = pack/bundle/start/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule "pack/bundle/start/vim-pug"]
-	path = pack/bundle/start/vim-pug
-	url = https://github.com/digitaltoad/vim-pug.git
 [submodule "pack/bundle/start/vim-tmux-navigator"]
 	path = pack/bundle/start/vim-tmux-navigator
 	url = https://github.com/christoomey/vim-tmux-navigator.git
