@@ -583,11 +583,6 @@ function! LightlineProjectionistType()
 endfunction
 
                                                                         " }}}2
-" | LustyJuggler / LustyExplorer |----------------------------------------{{{2
-"  \_________________________________________________________________________|
-" High Sierra altered ruby version, breaking this plugin.
-let g:LustyExplorerSuppressRubyWarning = 1
-                                                                        " }}}2
 " | SnipMate                     |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 if filereadable($HOME."/.vim/snippets/support_functions.vim")
