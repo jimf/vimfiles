@@ -521,6 +521,10 @@ let g:ale_set_highlights = 0
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 
+if filereadable("node_modules/@aw-int/aweber-webapp-scripts/.eslintrc") && !filereadable("./.eslintrc")
+    let g:ale_javascript_eslint_options = '--config node_modules/@aw-int/aweber-webapp-scripts/.eslintrc'
+endif
+
                                                                         " }}}2
 " | Emmet                        |----------------------------------------{{{2
 "  \_________________________________________________________________________|
