@@ -577,6 +577,10 @@ let g:lightline = {
     \   'left': [['mode', 'paste'], ['projectiontype', 'readonly', 'relativepath', 'modified']],
     \   'right': [['lineinfo'], ['percent']],
     \ },
+    \ 'inactive': {
+    \   'left': [['readonly', 'relativepath', 'modified']],
+    \   'right': [['lineinfo'], ['percent']],
+    \ },
     \ 'component_function': {
     \   'projectiontype': 'LightlineProjectionistType',
     \ },
