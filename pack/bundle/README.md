@@ -47,6 +47,10 @@ With bufexplorer, you can quickly and easily switch between buffers by using the
 
 `:BufOnly` with an argument will close all buffers but the supplied buffer name/number.
 
+### [closetag](https://github.com/alvan/vim-closetag)
+
+Automatically insert closing html tags as they are typed.
+
 ### [coffee-script](https://github.com/kchmck/vim-coffee-script.git)
 
 This project adds CoffeeScript support to vim.

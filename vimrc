@@ -526,6 +526,12 @@ if filereadable("node_modules/@aw-int/aweber-webapp-scripts/.eslintrc") && !file
 endif
 
                                                                         " }}}2
+" | closetag                     |----------------------------------------{{{2
+"  \_________________________________________________________________________|
+let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
+let g:closetag_xhtml_filetypes = 'xhtml,javascript'
+
+                                                                        " }}}2
 " | Emmet                        |----------------------------------------{{{2
 "  \_________________________________________________________________________|
 " Turn on Emmet for JSX in *.js files
