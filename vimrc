@@ -647,6 +647,12 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+augroup UltiSnipsEvents
+    autocmd!
+    autocmd BufNewFile *.test.js UltiSnipsAddFiletypes javascript-jest-es6
+    autocmd BufRead *.test.js UltiSnipsAddFiletypes javascript-jest-es6
+augroup END
+
                                                                         " }}}2
 
 " }}}1 vim: foldmethod=marker:foldlevel=0:fml=1
