@@ -86,6 +86,11 @@ augroup END
 augroup JavascriptEvents                                                " {{{2
     autocmd!
     autocmd FileType javascript setlocal isk-=:
+
+    " Set BABEL_ENV to prevent parse errors when eslint is using
+    " @babel/eslint-parser. I'd like to get this even closer to ALE if
+    " possible, so this solution may evolve.
+    autocmd FileType javascript let $BABEL_ENV = 'test'
 augroup END
                                                                         " }}}2
 augroup MakefileEvents                                                  " {{{2
