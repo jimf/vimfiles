@@ -519,6 +519,7 @@ command! -nargs=0 Standard call Standard()
 "  \_________________________________________________________________________|
 let g:ale_linters = {
   \ 'javascript': ['eslint'],
+  \ 'json': [''],
   \ }
 let g:ale_sign_error = '❌'
 let g:ale_sign_warning = '⚠️'
