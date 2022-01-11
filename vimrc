@@ -531,6 +531,10 @@ if filereadable("node_modules/@aw-int/aweber-webapp-scripts/.eslintrc") && !file
     let g:ale_javascript_eslint_options = '--config node_modules/@aw-int/aweber-webapp-scripts/.eslintrc'
 endif
 
+if filereadable("node_modules/@aw-int/aweber-webapp-scripts/.stylelintrc") && !filereadable("./.stylelintrc")
+    let g:ale_scss_stylelint_options = '--config node_modules/@aw-int/aweber-webapp-scripts/.stylelintrc'
+endif
+
                                                                         " }}}2
 " | closetag                     |----------------------------------------{{{2
 "  \_________________________________________________________________________|
