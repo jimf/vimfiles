@@ -538,8 +538,9 @@ endif
                                                                         " }}}2
 " | closetag                     |----------------------------------------{{{2
 "  \_________________________________________________________________________|
-let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
-let g:closetag_xhtml_filetypes = 'xhtml,javascript'
+" JS disabled for now. This proved to be mostly clunky and annoying.
+" let g:closetag_filetypes = 'html,xhtml,phtml,javascript'
+" let g:closetag_xhtml_filetypes = 'xhtml,javascript'
 
                                                                         " }}}2
 " | Emmet                        |----------------------------------------{{{2
