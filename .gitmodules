@@ -100,3 +100,6 @@
 [submodule "pack/bundle/start/vim-closetag"]
 	path = pack/bundle/start/vim-closetag
 	url = https://github.com/alvan/vim-closetag.git
+[submodule "pack/bundle/start/fugitive-gitlab"]
+	path = pack/bundle/start/fugitive-gitlab
+	url = https://github.com/shumphrey/fugitive-gitlab.vim.git

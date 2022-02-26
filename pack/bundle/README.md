@@ -105,6 +105,10 @@ Or maybe it's the premier Git plugin for Vim?
 Either way, it's "so awesome, it should be illegal".
 That's why it's called Fugitive.
 
+### [fugitive-gitlab](https://github.com/shumphrey/fugitive-gitlab.vim)
+
+Fugitive extension that adds additional GitLab support.
+
 ### [FZF](https://github.com/junegunn/fzf)
 
 fzf is a general-purpose command-line fuzzy finder.
