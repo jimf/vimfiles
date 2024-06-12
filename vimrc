@@ -237,8 +237,8 @@ endif
 if !has("gui_running")
     if has("mac")
         if exists('$TMUX')
-            let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-            let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+            let &t_SI = "\<Esc>[6 q"
+            let &t_EI = "\<Esc>[0 q"
         else
             let &t_SI = "\<Esc>]50;CursorShape=1\x7"
             let &t_EI = "\<Esc>]50;CursorShape=0\x7"
@@ -247,7 +247,7 @@ if !has("gui_running")
 endif
 
 " Ignore these patterns during completion.
-set wildignore=*.pyc,*.egg-info/*,*.egg/*,*/node_modules/*,*/build/*,*/coverage/*,*/dist/*,package-lock.json
+set wildignore=*.pyc,*.egg-info/*,*.egg/*,node_modules/*,build/*,coverage/*,dist/*,package-lock.json
 
 " Enable folding and make it indent-sensitive.
 if version >= 600
@@ -529,6 +529,8 @@ highlight clear ALEWarningSign
 
 if filereadable("node_modules/@aw-int/aweber-webapp-scripts/.eslintrc") && !filereadable("./.eslintrc")
     let g:ale_javascript_eslint_options = '--config node_modules/@aw-int/aweber-webapp-scripts/.eslintrc'
+elseif filereadable("node_modules/@aw-int/aweber-webapp-scripts/.eslintrc.js") && !filereadable("./.eslintrc")
+    let g:ale_javascript_eslint_options = '--config node_modules/@aw-int/aweber-webapp-scripts/.eslintrc.js'
 endif
 
 if filereadable("node_modules/@aw-int/aweber-webapp-scripts/.stylelintrc") && !filereadable("./.stylelintrc")
